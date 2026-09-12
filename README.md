@@ -1,13 +1,15 @@
 # Babette Klingenberg – Relaunch-Vorschläge
 
-Drei Design-Vorschläge zur Modernisierung von [babette-klingenberg.de](https://www.babette-klingenberg.de/), erstellt auf Basis der Texte und Bilder der bestehenden Website.
+Fünf Design-Vorschläge zur Modernisierung von [babette-klingenberg.de](https://www.babette-klingenberg.de/), erstellt auf Basis der Texte und Bilder der bestehenden Website.
 
 ## Ansehen
 
-- `index.html` – Übersicht mit Links zu allen drei Vorschlägen
+- `index.html` – Übersicht mit Links zu allen fünf Vorschlägen
 - `proposal-1-klassisch/` – Klassisch-Elegant (Creme/Bordeaux, Serifen, nah am bestehenden Look)
 - `proposal-2-atelier/` – Warmes Atelier (Editorial-Stil, Seitennavigation, Terrakotta/Olive)
 - `proposal-3-galerie/` – Moderne Galerie (dunkles Theme, Masonry-Grid, bildstark)
+- `proposal-4-verspielt/` – Verspielt & Herzlich (Pastellfarben, runde Formen, betont Kinderbuch-/Illustrationsseite)
+- `proposal-5-minimal/` – Minimalistisch/Swiss (Schwarz-Weiß mit Rot-Akzent, große Grotesk-Typografie, strenges Raster)
 
 Lokal einfach `index.html` im Browser öffnen, oder über GitHub Pages (siehe unten) live ansehen.
 
@@ -31,7 +33,7 @@ Damit die Vorschläge über eine echte URL erreichbar sind:
 - **Kontaktformular**: Die Formulare in allen drei Vorschlägen sind rein optisch (kein Versand-Backend). Das Original nutzte ein Strato-CGI-Mailscript – für den Relaunch empfiehlt sich ein moderner Form-Service (z. B. Formspree, Netlify Forms) oder ein einfaches `mailto:`-Fallback.
 - **Preise/Angebote** (Karten 2,50 €, Kalender 8,00 €) und die **Ausstellungsliste** (zuletzt 2011) stammen unverändert von der Originalseite – vor Veröffentlichung mit Babette Klingenberg auf Aktualität prüfen.
 - **Impressum**: Aus Datenschutzgründen wurde die im Original genannte Technik-Umsetzerin (Drittperson) nicht in die Vorschläge übernommen; bei Bedarf im finalen Impressum ergänzen.
-- Keine der drei Varianten ist als „fertig zum Livegang" gedacht – es sind Gestaltungsvorschläge zur Auswahl einer Richtung, danach folgt Feinschliff (Responsive-Test auf echten Geräten, echtes Kontaktformular, SEO/Meta-Tags, Bildoptimierung).
+- Keine der fünf Varianten ist als „fertig zum Livegang" gedacht – es sind Gestaltungsvorschläge zur Auswahl einer Richtung, danach folgt Feinschliff (Responsive-Test auf echten Geräten, echtes Kontaktformular, SEO/Meta-Tags, Bildoptimierung).
 
 ---
 Erstellt mit Claude Code.
