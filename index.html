@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Babette Klingenberg – Relaunch-Vorschläge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:#faf6f0;color:#2b2724;line-height:1.6;}
+  .wrap{max-width:980px;margin:0 auto;padding:80px 32px;}
+  h1{font-family:'Playfair Display',serif;font-size:2.4rem;margin:0 0 .3em;}
+  p.lead{color:#6b6259;max-width:640px;font-size:1.05rem;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+  .card{background:#fff;border:1px solid #e6ddd1;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.2);}
+  .card img{width:100%;height:160px;object-fit:cover;}
+  .card .body{padding:20px 22px;flex:1;display:flex;flex-direction:column;}
+  .card h2{font-family:'Playfair Display',serif;font-size:1.3rem;margin:0 0 8px;}
+  .card p{color:#6b6259;font-size:.92rem;margin:0 0 16px;flex:1;}
+  .card .cta{color:#780e12;font-weight:600;font-size:.88rem;}
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid #e6ddd1;color:#6b6259;font-size:.85rem;}
+  @media (max-width:800px){.cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Relaunch-Vorschläge: Babette Klingenberg</h1>
+  <p class="lead">Drei Gestaltungsrichtungen für die Modernisierung von babette-klingenberg.de – auf Basis der bestehenden Texte und Bilder der Künstlerin. Alle drei sind vollständige, eigenständige HTML-Seiten (eine pro Richtung) und können unabhängig voneinander begutachtet werden.</p>
+
+  <div class="cards">
+    <a class="card" href="proposal-1-klassisch/index.html">
+      <img src="images/painting/painting5_figuerlich_thumb.jpg" alt="Vorschlag 1 Vorschau">
+      <div class="body">
+        <h2>1 · Klassisch-Elegant</h2>
+        <p>Warmes Creme, Bordeaux als Markenfarbe (wie im Original), Serifen-Headlines, ruhige Galerie mit viel Weißraum. Nah am bestehenden Charakter, aber zeitgemäß umgesetzt.</p>
+        <span class="cta">Vorschlag ansehen →</span>
+      </div>
+    </a>
+    <a class="card" href="proposal-2-atelier/index.html">
+      <img src="images/painting/painting6_pflanzlich_thumb.jpg" alt="Vorschlag 2 Vorschau">
+      <div class="body">
+        <h2>2 · Warmes Atelier</h2>
+        <p>Editorial/Magazin-Stil mit Seitennavigation, Terrakotta &amp; Olive, Mosaik-Galerien und erzählendem Aufbau. Wirkt persönlich und atelierhaft.</p>
+        <span class="cta">Vorschlag ansehen →</span>
+      </div>
+    </a>
+    <a class="card" href="proposal-3-galerie/index.html">
+      <img src="images/illustration/illustration1_tiere_thumb.jpg" alt="Vorschlag 3 Vorschau">
+      <div class="body">
+        <h2>3 · Moderne Galerie</h2>
+        <p>Dunkler Hintergrund, damit die Kunstwerke leuchten. Bildstarker Masonry-Grid, klare Sans-Typografie, galerie-artiger Auftritt.</p>
+        <span class="cta">Vorschlag ansehen →</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    Texte und Bilder übernommen von der bestehenden Seite <a href="https://www.babette-klingenberg.de/" style="color:#780e12;">babette-klingenberg.de</a> (Stand: aktuelle Live-Version). Details und offene Punkte siehe <a href="README.md" style="color:#780e12;">README</a>.
+  </footer>
+</div>
+</body>
+</html>

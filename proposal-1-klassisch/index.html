@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Babette Klingenberg – Kunst, Illustration, Grafik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bordeaux:#780e12;
+    --bordeaux-dark:#5a0a0d;
+    --cream:#faf6f0;
+    --paper:#fffdfa;
+    --ink:#2b2724;
+    --muted:#6b6259;
+    --line:#e6ddd1;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif; font-weight:600; margin:0 0 .5em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,240,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--bordeaux);text-decoration:none;}
+  .brand img{height:38px;width:auto;}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav a{text-decoration:none;font-size:.92rem;letter-spacing:.03em;color:var(--ink);padding:4px 0;border-bottom:2px solid transparent;transition:.2s;}
+  nav a:hover{border-color:var(--bordeaux);color:var(--bordeaux);}
+  .nav-toggle{display:none;background:none;border:none;font-size:1.6rem;color:var(--bordeaux);cursor:pointer;}
+
+  .hero{position:relative;height:78vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05);}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,12,.05) 0%,rgba(20,15,12,.65) 100%);}
+  .hero-content{position:relative;z-index:2;color:#fff;padding:56px 32px;max-width:1120px;margin:0 auto;width:100%;}
+  .hero-content .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;color:#f0d9c8;margin-bottom:14px;}
+  .hero-content h1{font-size:clamp(2.2rem,5vw,3.6rem);color:#fff;max-width:640px;}
+  .hero-content p{max-width:520px;color:#eee2d6;font-size:1.05rem;}
+
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .section-head .kicker{text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;color:var(--bordeaux);margin-bottom:10px;font-weight:600;}
+  .section-head h2{font-size:2.2rem;}
+  .section-head p{color:var(--muted);}
+
+  .quote-block{background:var(--bordeaux);color:#fff;text-align:center;padding:80px 32px;}
+  .quote-block blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2rem);max-width:760px;margin:0 auto 16px;}
+  .quote-block cite{font-style:normal;opacity:.75;font-size:.9rem;letter-spacing:.05em;}
+
+  .vita-grid{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:start;}
+  .vita-grid img{border-radius:4px;box-shadow:0 18px 40px -18px rgba(0,0,0,.35);}
+  .timeline{border-left:2px solid var(--line);margin:0;padding:0;}
+  .timeline li{list-style:none;position:relative;padding:0 0 28px 28px;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bordeaux);}
+  .timeline .year{color:var(--bordeaux);font-weight:600;font-size:.85rem;letter-spacing:.03em;display:block;margin-bottom:2px;}
+  .timeline .desc{color:var(--ink);}
+
+  .lede{max-width:760px;margin:0 auto 40px;color:var(--muted);}
+  .lede p{margin-bottom:1.1em;}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .gallery figure{margin:0;position:relative;overflow:hidden;border-radius:6px;background:#efe6d8;aspect-ratio:4/5;}
+  .gallery figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.06);}
+  .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 16px;background:linear-gradient(0deg,rgba(20,15,12,.75),transparent);color:#fff;font-size:.95rem;letter-spacing:.02em;}
+
+  .note-box{max-width:760px;margin:44px auto 0;text-align:center;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line);padding-top:28px;}
+  .note-box a{color:var(--bordeaux);font-weight:600;text-decoration:none;}
+
+  .alt{background:var(--paper);}
+
+  .price-note{max-width:760px;margin:40px auto 0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 24px;color:var(--muted);font-size:.92rem;}
+
+  .exhibitions{max-width:640px;margin:0 auto;}
+  .exhibitions ul{list-style:none;margin:0;padding:0;}
+  .exhibitions li{display:flex;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);}
+  .exhibitions .y{color:var(--bordeaux);font-weight:600;width:52px;flex:none;}
+
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:32px;}
+  .contact-card p{margin:.3em 0;}
+  .contact-card .label{color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-top:18px;}
+  form .field{margin-bottom:16px;}
+  form label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px;}
+  form input,form textarea{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:.95rem;background:#fff;}
+  form button{background:var(--bordeaux);color:#fff;border:none;padding:12px 28px;border-radius:6px;font-size:.95rem;cursor:pointer;transition:.2s;}
+  form button:hover{background:var(--bordeaux-dark);}
+
+  footer{background:#221c19;color:#cfc4b8;padding:44px 0 28px;font-size:.85rem;}
+  .footer-wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  footer a{color:#f0d9c8;text-decoration:none;}
+
+  @media (max-width:860px){
+    nav{display:none;}
+    .nav-toggle{display:block;}
+    .vita-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .contact-wrap{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .gallery{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="#home" class="brand"><img src="../images/logo.png" alt="Babette Klingenberg Logo">Babette Klingenberg</a>
+    <nav>
+      <ul>
+        <li><a href="#vita">Vita</a></li>
+        <li><a href="#arbeit">Meine Arbeit</a></li>
+        <li><a href="#malerei">Malerei</a></li>
+        <li><a href="#illustration">Illustration</a></li>
+        <li><a href="#karten">Karten</a></li>
+        <li><a href="#ausstellungen">Ausstellungen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="hero" style="padding:0;">
+  <img src="../images/painting/painting5_figuerlich_thumb.jpg" alt="Gemälde von Babette Klingenberg">
+  <div class="hero-content">
+    <div class="eyebrow">Malerei · Illustration · Grafik · München</div>
+    <h1>Kunst, die aus Stimmungen entsteht</h1>
+    <p>Babette Klingenberg malt und illustriert seit über drei Jahrzehnten – inspiriert von Natur, Landschaften und den Jahreszeiten.</p>
+  </div>
+</section>
+
+<div class="quote-block">
+  <blockquote>„Die Ausübung der Kunst ist ein großer Teil meines Ichs, es ist mir die Luft, mit der ich atme.“</blockquote>
+  <cite>— Clara Schumann</cite>
+</div>
+
+<section id="arbeit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Über mich</div>
+      <h2>Meine Arbeit</h2>
+    </div>
+    <div class="lede">
+      <p>Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit <a href="#illustration" style="color:var(--bordeaux);">Illustration</a> und <a href="#malerei" style="color:var(--bordeaux);">Malerei</a> beschäftigt. Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen. Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion. Auf Künstlermärkten präsentiere ich kleinformatige Bilder, oft auf Holz, mit viel Struktur, die eher illustrativ angelegt sind. Die großformatigen Bilder sind auf <a href="#ausstellungen" style="color:var(--bordeaux);">Ausstellungen</a> zu sehen.</p>
+      <p>Inspiriert werde ich von der Natur, von Landschaften, auf Reisen, von Stimmungen in den verschiedenen Jahreszeiten. Elemente aus der Natur wie Holz, Steine, alte Mauern sind ein Grundstock für meine Bilder, die im kreativen Prozess jedoch teilweise oder ganz verschwinden. Die Stile variieren von abstrakt, über ornamental bis hin zu figürlichen und pflanzlichen Motiven.</p>
+      <p>Ich empfinde meine Arbeit als ständiges Suchen nach neuen Möglichkeiten, mich auszudrücken, und bin neugierig, immer wieder Neues auszuprobieren. Offen für viele Themen bedeutet Malen für mich kontinuierliche Entwicklung und ist oft Ausdruck meiner selbst.</p>
+    </div>
+  </div>
+</section>
+
+<section id="vita" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Werdegang</div>
+      <h2>Vita</h2>
+    </div>
+    <div class="vita-grid">
+      <img src="../images/portrait.jpg" alt="Portrait Babette Klingenberg">
+      <ul class="timeline">
+        <li><span class="year">1961</span><span class="desc">Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li>
+        <li><span class="year">1982</span><span class="desc">Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li>
+        <li><span class="year">1983</span><span class="desc">Studium der Malerei an der Akademie Roederer, Paris</span></li>
+        <li><span class="year">1987</span><span class="desc">Diplom für Kommunikationsdesign an der FH Augsburg</span></li>
+        <li><span class="year">1988–1992</span><span class="desc">Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Gestaltung von Signets und Logos für Geschäfte und Firmen</span></li>
+        <li><span class="year">1989–2010</span><span class="desc">Wöchentlich Illustrationen für den Ulrich-Verlag Augsburg</span></li>
+        <li><span class="year">1993/96</span><span class="desc">Geburt zweier Töchter, seitdem freiberufliche Illustratorin</span></li>
+        <li><span class="year">2002</span><span class="desc">Veröffentlichung von Kinderbüchern: „Kinder lesen und schreiben für Kinder“</span></li>
+        <li><span class="year">2003</span><span class="desc">„Der kleine Bär macht eine Reise“</span></li>
+        <li><span class="year">seit 2003</span><span class="desc">Teilnahme an Kursen für Malerei und Abstraktion; regelmäßige Einzelausstellungen in Büchereien, Firmen und Kliniken</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="malerei">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Portfolio</div>
+      <h2>Malerei</h2>
+      <p>Ob dekorativ, figürlich oder konkret – ich male, je nach Stimmung, in verschiedenen Genres.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="../images/painting/painting1_spachtel_thumb.jpg" alt="Spachteltechnik"><figcaption>Spachteltechnik</figcaption></figure>
+      <figure><img src="../images/painting/painting2_konkret_thumb.jpg" alt="Konkret"><figcaption>Konkret</figcaption></figure>
+      <figure><img src="../images/painting/painting3_dekorativ_thumb.jpg" alt="Dekorativ"><figcaption>Dekorativ</figcaption></figure>
+      <figure><img src="../images/painting/painting4_abstrakt_thumb.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
+      <figure><img src="../images/painting/painting5_figuerlich_thumb.jpg" alt="Figürlich"><figcaption>Figürlich</figcaption></figure>
+      <figure><img src="../images/painting/painting6_pflanzlich_thumb.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
+    </div>
+    <p class="note-box">Falls Ihnen eines der Bilder gefällt, fertige ich es gerne nach Maß oder in gewünschten Farben an – Motiv, Form und Farbe bestimmen Sie. Auf Wunsch berate ich Sie mit einer Bildauswahl vor Ort. Preise auf <a href="#kontakt">Anfrage</a>.</p>
+  </div>
+</section>
+
+<section id="illustration" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Portfolio</div>
+      <h2>Illustration</h2>
+      <p>Ein großes Repertoire für Geschichten, Rätsel und Bastelanleitungen – für Kinder und Erwachsene.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="../images/illustration/illustration1_tiere_thumb.jpg" alt="Tiere"><figcaption>Tiere</figcaption></figure>
+      <figure><img src="../images/illustration/illustration2_kalender_thumb.jpg" alt="Kalender"><figcaption>Kalender</figcaption></figure>
+      <figure><img src="../images/illustration/illustration3_basteln_thumb.jpg" alt="Rätseln und Basteln"><figcaption>Rätseln und Basteln</figcaption></figure>
+      <figure><img src="../images/illustration/illustration4_kinderbuecher_thumb.jpg" alt="Kinderbücher"><figcaption>Kinderbücher</figcaption></figure>
+      <figure><img src="../images/illustration/illustration5_schwarzweiss_thumb.jpg" alt="Schwarz-Weiß"><figcaption>Schwarz-Weiß</figcaption></figure>
+      <figure><img src="../images/illustration/illustration6_menschen_thumb.jpg" alt="Menschen"><figcaption>Menschen</figcaption></figure>
+    </div>
+    <p class="note-box">Techniken: Aquarell, Buntstift, Gouache, Tusche und Acryl – teils digital weiterbearbeitet. Ergänzend biete ich auch Layoutarbeiten an.</p>
+  </div>
+</section>
+
+<section id="karten">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Portfolio</div>
+      <h2>Karten &amp; Kalender</h2>
+      <p>Die Motive ergeben sich aus einer Mischung von Malerei und Illustration.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="../images/cards/cards1_ohnetext_thumb.jpg" alt="Ohne Text"><figcaption>Ohne Text</figcaption></figure>
+      <figure><img src="../images/cards/cards2_anderetexte_thumb.jpg" alt="Andere Texte"><figcaption>Andere Texte</figcaption></figure>
+      <figure><img src="../images/cards/cards3_glueckwunsch_thumb.jpg" alt="Herzlichen Glückwunsch"><figcaption>Herzlichen Glückwunsch</figcaption></figure>
+      <figure><img src="../images/cards/cards4_geburtstag_thumb.jpg" alt="Geburtstag"><figcaption>Geburtstag</figcaption></figure>
+      <figure><img src="../images/cards/cards5_allesliebe_thumb.jpg" alt="Alles Liebe"><figcaption>Alles Liebe</figcaption></figure>
+      <figure><img src="../images/cards/cards6_weihnachten_thumb.jpg" alt="Weihnachten"><figcaption>Weihnachten</figcaption></figure>
+    </div>
+    <div class="price-note">Gerne gestalte ich Karten zu Ihren individuellen Anlässen. Bestellung bitte mit Angabe von Nummer und Anzahl per Kontaktformular. Karte + Kuvert 2,50&nbsp;€ zzgl. 1,45&nbsp;€ Versand · Kalender 8,00&nbsp;€ zzgl. 1,45&nbsp;€ Versand.</div>
+  </div>
+</section>
+
+<section id="ausstellungen" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Werkschau</div>
+      <h2>Ausstellungen</h2>
+    </div>
+    <div class="exhibitions">
+      <ul>
+        <li><span class="y">2011</span><span>Künstlerkreis Neuried</span></li>
+        <li><span class="y">2011</span><span>Stadtbibliothek Moosach</span></li>
+        <li><span class="y">2011</span><span>Radiologie München</span></li>
+        <li><span class="y">2010</span><span>Klinikum Starnberg, München</span></li>
+        <li><span class="y">2009</span><span>Tech Data, München</span></li>
+        <li><span class="y">2009</span><span>DiVoCare, München</span></li>
+        <li><span class="y">2009</span><span>Klinikum Großhadern, München</span></li>
+        <li><span class="y">2008</span><span>Kleine Galerie, Neuried</span></li>
+        <li><span class="y">2007</span><span>Café „Vor Ort“, Neuried</span></li>
+        <li><span class="y">2007</span><span>Stadtbibliothek Fürstenried</span></li>
+        <li><span class="y">2005</span><span>Stadtbibliothek Fürstenried</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Anfrage</div>
+      <h2>Kontakt</h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <h3 style="font-size:1.3rem;">Babette Klingenberg</h3>
+        <p>Oppenriederstraße 47</p>
+        <p>81477 München</p>
+        <p class="label">Telefon</p>
+        <p><a href="tel:+498978 6580">089 / 78 65 80</a></p>
+        <p class="label">E-Mail</p>
+        <p><a href="mailto:info@babette-klingenberg.de">info@babette-klingenberg.de</a></p>
+      </div>
+      <form>
+        <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Ihr Name"></div>
+        <div class="field"><label for="email">E-Mail</label><input id="email" type="email" placeholder="ihre@email.de"></div>
+        <div class="field"><label for="betreff">Betreff</label><input id="betreff" type="text" placeholder="z. B. Preisanfrage Bild"></div>
+        <div class="field"><label for="nachricht">Nachricht</label><textarea id="nachricht" rows="5" placeholder="Ihre Nachricht"></textarea></div>
+        <button type="button">Senden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div>© Babette Klingenberg · Oppenriederstraße 47 · 81477 München</div>
+    <div><a href="../index.html">Design-Vorschläge</a> · <a href="mailto:info@babette-klingenberg.de">Impressum &amp; Kontakt</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
