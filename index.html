@@ -79,9 +79,10 @@
   .gallery figcaption{position:absolute;left:10px;bottom:10px;background:rgba(58,47,39,.82);color:#fbf0e2;padding:5px 10px;border-radius:20px;}
 
   /* ---------- Malerei-Kategorien sind anklickbar (öffnen Lightbox) ---------- */
-  #malerei .gallery figure{cursor:pointer;}
-  #malerei .gallery figure::after{content:"+ mehr ansehen";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(58,47,39,0);color:transparent;font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:.2s;}
-  #malerei .gallery figure:hover::after{background:rgba(58,47,39,.45);color:#fff;}
+  #malerei .gallery figure,#karten .gallery figure{cursor:pointer;}
+  #malerei .gallery figure::after,#karten .gallery figure::after{content:"+ mehr ansehen";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(58,47,39,0);color:transparent;font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:.2s;text-align:center;padding:12px;}
+  #malerei .gallery figure:hover::after,#karten .gallery figure:hover::after{background:rgba(58,47,39,.45);color:#fff;}
+  .gallery-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--terracotta),var(--olive));}
 
   /* ---------- Ausstellungen ---------- */
   .membership-note{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:25px;color:var(--muted);}
@@ -111,7 +112,10 @@
   .lightbox-close{position:absolute;top:16px;right:16px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;}
   .lightbox-close:hover{background:var(--terracotta-dark);}
   .lightbox-inner h3{margin-top:0;font-size:1.8rem;}
-  .lightbox-count{color:var(--muted);font-size:.9rem;margin:-8px 0 0;}
+  .lightbox-desc{color:var(--ink);font-size:1rem;max-width:640px;margin:0 0 4px;white-space:pre-line;}
+  .lightbox-dims{color:var(--terracotta-dark);font-size:.85rem;font-weight:600;margin:0 0 4px;}
+  .lightbox-count{color:var(--muted);font-size:.9rem;margin:0 0 0;}
+  .lightbox-empty{color:var(--muted);font-style:italic;margin-top:20px;}
   .lightbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:20px;}
   .lightbox-grid img{width:100%;height:220px;object-fit:cover;border-radius:6px;display:block;background:var(--sand);cursor:zoom-in;}
 
@@ -268,12 +272,12 @@
         <span class="lede-side">Ob dekorativ, figürlich oder konkret – ich male je nach Stimmung in verschiedenen Genres. Klicken Sie auf eine Kategorie für weitere Werke.</span>
       </div>
       <div class="gallery">
-        <figure data-cat="figuerlich"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich"><figcaption>Figürlich</figcaption></figure>
-        <figure data-cat="abstrakt"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
-        <figure data-cat="landschaft"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
-        <figure data-cat="tierisch"><img src="images/painting/gallery/tierisch/tierisch-1.jpg" alt="Tierisch"><figcaption>Tierisch</figcaption></figure>
-        <figure data-cat="kubistisch"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch"><figcaption>Kubistisch</figcaption></figure>
-        <figure data-cat="pflanzlich"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
+        <figure data-cat="figuerlich" data-group="malerei"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich"><figcaption>Figürlich</figcaption></figure>
+        <figure data-cat="abstrakt" data-group="malerei"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
+        <figure data-cat="landschaft" data-group="malerei"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
+        <figure data-cat="tierisch" data-group="malerei"><img src="images/painting/gallery/tierisch/tierisch-1.jpg" alt="Tierisch"><figcaption>Tierisch</figcaption></figure>
+        <figure data-cat="kubistisch" data-group="malerei"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch"><figcaption>Kubistisch</figcaption></figure>
+        <figure data-cat="pflanzlich" data-group="malerei"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
       </div>
       <p class="price-note">Falls Ihnen eines der Bilder gefällt, fertige ich es gerne nach Maß oder in gewünschten Farben an. Auf Wunsch berate ich Sie mit einer Bildauswahl vor Ort.</p>
     </section>
@@ -284,15 +288,16 @@
     <section id="karten">
       <div class="section-head">
         <h2>Illustrationen, Karten &amp; Kalender</h2>
-        <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben.</span>
+        <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben. Klicken Sie auf eine Kategorie für Beispiele und Details.</span>
       </div>
       <div class="gallery">
-        <figure><img src="images/cards/cards3_glueckwunsch_thumb.jpg" alt="Herzlichen Glückwunsch"><figcaption>Glückwunsch</figcaption></figure>
-        <figure><img src="images/cards/cards6_weihnachten_thumb.jpg" alt="Weihnachten"><figcaption>Weihnachten</figcaption></figure>
-        <figure><img src="images/cards/cards4_geburtstag_thumb.jpg" alt="Geburtstag"><figcaption>Geburtstag</figcaption></figure>
-        <figure><img src="images/cards/cards1_ohnetext_thumb.jpg" alt="Ohne Text"><figcaption>Ohne Text</figcaption></figure>
-        <figure><img src="images/cards/cards5_allesliebe_thumb.jpg" alt="Alles Liebe"><figcaption>Alles Liebe</figcaption></figure>
-        <figure><img src="images/cards/cards2_anderetexte_thumb.jpg" alt="Andere Texte"><figcaption>Andere Texte</figcaption></figure>
+        <figure data-cat="weihnachtskarten" data-group="illu"><img src="images/illustration/gallery/weihnachtskarten/karte-04.jpg" alt="Weihnachtskarten"><figcaption>Weihnachtskarten</figcaption></figure>
+        <figure data-cat="tischkalender" data-group="illu"><img src="images/illustration/gallery/tischkalender/cover.jpg" alt="Tischkalender mit Sprüchen"><figcaption>Tischkalender mit Sprüchen</figcaption></figure>
+        <figure data-cat="karten" data-group="illu"><img src="images/illustration/gallery/karten/produktfoto.jpg" alt="Karten"><figcaption>Karten</figcaption></figure>
+        <figure data-cat="jahreskalender" data-group="illu"><img src="images/illustration/gallery/jahreskalender/produktfoto.jpg" alt="Jahreskalender"><figcaption>Jahreskalender</figcaption></figure>
+        <figure data-cat="geburtstagskalender" data-group="illu"><img src="images/illustration/gallery/geburtstagskalender/cover.jpg" alt="Geburtstagskalender"><figcaption>Geburtstagskalender</figcaption></figure>
+        <figure data-cat="adventskalender" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Adventskalender</figcaption></figure>
+        <figure data-cat="franzoesische-rezepte" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Französische Rezepte</figcaption></figure>
       </div>
       <p class="price-note">Durch eine große Farbpalette, viele Muster und teilweise schwungvolle Bewegungen der Figuren versuche ich, Leichtigkeit auszudrücken. Mein Anliegen ist es, dem Betrachter ein kleines Lächeln zu entlocken und ihn für einen Moment in eine hoffnungsvolle Welt zu entführen.</p>
       <p class="price-note">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: babetteklingenberg@web.de · Tel.: 0160 / 5602862</p>
@@ -420,12 +425,14 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- Lightbox: zeigt alle Werke einer Malerei-Kategorie            -->
+<!-- Lightbox: zeigt Details/Werke einer Kategorie (Malerei oder Illustrationen) -->
 <!-- ============================================================ -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Schließen">×</button>
     <h3 id="lightboxTitle"></h3>
+    <p class="lightbox-desc" id="lightboxDesc"></p>
+    <p class="lightbox-dims" id="lightboxDims"></p>
     <p class="lightbox-count" id="lightboxCount"></p>
     <div class="lightbox-grid" id="lightboxGrid"></div>
   </div>
@@ -528,24 +535,135 @@
     ]}
   };
 
+  const ILLU_DATA = {
+    weihnachtskarten: {
+      title: 'Weihnachtskarten',
+      desc: 'Weihnachtskarten mit vielen unterschiedlichen Motiven. Um Menschen, die man gerne hat, eine kleine Freude zu bereiten.',
+      images: [
+        'images/illustration/gallery/weihnachtskarten/karte-01.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-02.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-03.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-04.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-05.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-06.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-07.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-08.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-09.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-10.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-11.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-12.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-13.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-14.jpg',
+        'images/illustration/gallery/weihnachtskarten/karte-15.jpg',
+        'images/illustration/gallery/weihnachtskarten/produktfoto.jpg'
+      ]
+    },
+    adventskalender: {
+      title: 'Adventskalender',
+      desc: 'Alle Jahre wieder ....... kommt die Adventszeit. Unterschiedliche Motive, Quer- oder Hochformat A3.',
+      images: []
+    },
+    jahreskalender: {
+      title: 'Jahreskalender',
+      desc: 'Jedes Jahr nach einem neuen Motto. Monatskalender mit Illustrationen zum Schmunzeln, Nachdenken .... Mit Platz für persönliche Eintragungen.',
+      dims: '10,5 × 29,7 cm',
+      images: [
+        'images/illustration/gallery/jahreskalender/produktfoto.jpg'
+      ]
+    },
+    geburtstagskalender: {
+      title: 'Geburtstagskalender',
+      desc: 'Immerwährender Kalender mit Illustrationen zum Thema Musik. Damit die Geburtstage der Freunde und Bekannten nicht in Vergessenheit geraten.',
+      dims: '14,5 × 21 cm',
+      images: [
+        'images/illustration/gallery/geburtstagskalender/cover.jpg',
+        'images/illustration/gallery/geburtstagskalender/dirigent.jpg',
+        'images/illustration/gallery/geburtstagskalender/harfe.jpg',
+        'images/illustration/gallery/geburtstagskalender/cello.jpg',
+        'images/illustration/gallery/geburtstagskalender/floete.jpg',
+        'images/illustration/gallery/geburtstagskalender/duo.jpg'
+      ]
+    },
+    tischkalender: {
+      title: 'Tischkalender mit Sprüchen',
+      desc: '„Sprücheklopfen" – kleine Lebenshilfe für den Alltag. Sprüche für jeden Tag, die ermutigen, schmunzeln und ein wenig zum Nachdenken anregen können. Mit Ringbindung, zum Aufstellen.',
+      dims: '10,5 × 14,5 cm',
+      images: [
+        'images/illustration/gallery/tischkalender/cover.jpg',
+        'images/illustration/gallery/tischkalender/beispiel.jpg',
+        'images/illustration/gallery/tischkalender/spruch-01.jpg',
+        'images/illustration/gallery/tischkalender/spruch-02.jpg',
+        'images/illustration/gallery/tischkalender/spruch-03.jpg',
+        'images/illustration/gallery/tischkalender/spruch-04.jpg',
+        'images/illustration/gallery/tischkalender/spruch-05.jpg',
+        'images/illustration/gallery/tischkalender/spruch-06.jpg',
+        'images/illustration/gallery/tischkalender/spruch-07.jpg',
+        'images/illustration/gallery/tischkalender/spruch-08.jpg',
+        'images/illustration/gallery/tischkalender/spruch-09.jpg',
+        'images/illustration/gallery/tischkalender/spruch-10.jpg',
+        'images/illustration/gallery/tischkalender/spruch-11.jpg',
+        'images/illustration/gallery/tischkalender/spruch-12.jpg',
+        'images/illustration/gallery/tischkalender/spruch-13.jpg'
+      ]
+    },
+    'franzoesische-rezepte': {
+      title: 'Französische Rezepte',
+      desc: 'Leichte Rezepte aus Frankreich, einfach nachzukochen und zu backen, mit Ringbindung zum Aufstellen.',
+      dims: '10,5 × 10,5 cm',
+      images: []
+    },
+    karten: {
+      title: 'Karten',
+      desc: 'Es kann Spaß machen, mal wieder Karten zu schreiben und Anderen eine kleine Freude zu bereiten.',
+      images: [
+        'images/illustration/gallery/karten/produktfoto.jpg',
+        'images/cards/cards3_glueckwunsch_thumb.jpg',
+        'images/cards/cards6_weihnachten_thumb.jpg',
+        'images/cards/cards4_geburtstag_thumb.jpg',
+        'images/cards/cards1_ohnetext_thumb.jpg',
+        'images/cards/cards5_allesliebe_thumb.jpg',
+        'images/cards/cards2_anderetexte_thumb.jpg'
+      ]
+    }
+  };
+
+  const WATERMARKS = {
+    malerei: 'Malerei von Babette Klingenberg',
+    illu: 'Illustration von Babette Klingenberg'
+  };
+
   const lightbox = document.getElementById('lightbox');
   const lightboxGrid = document.getElementById('lightboxGrid');
   const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxDims = document.getElementById('lightboxDims');
   const lightboxCount = document.getElementById('lightboxCount');
   const lightboxClose = document.getElementById('lightboxClose');
 
   const preview = document.getElementById('preview');
   const previewImg = document.getElementById('previewImg');
   const previewClose = document.getElementById('previewClose');
+  const previewWatermark = document.querySelector('.preview-watermark span');
 
-  function openLightbox(cat) {
-    const data = GALLERY_DATA[cat];
+  let currentWatermark = WATERMARKS.malerei;
+
+  function openLightbox(cat, group) {
+    const source = group === 'illu' ? ILLU_DATA : GALLERY_DATA;
+    const data = source[cat];
     if (!data) return;
+    currentWatermark = WATERMARKS[group] || WATERMARKS.malerei;
     lightboxTitle.textContent = data.title;
-    lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Werk' : ' Werke') + ' – zum Vergrößern anklicken';
-    lightboxGrid.innerHTML = data.images
-      .map(src => '<img src="' + src + '" alt="' + data.title + '" loading="lazy">')
-      .join('');
+    lightboxDesc.textContent = data.desc || '';
+    lightboxDims.textContent = data.dims ? 'Format: ' + data.dims : '';
+    if (data.images.length) {
+      lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Bild' : ' Bilder') + ' – zum Vergrößern anklicken';
+      lightboxGrid.innerHTML = data.images
+        .map(src => '<img src="' + src + '" alt="' + data.title + '" loading="lazy">')
+        .join('');
+    } else {
+      lightboxCount.textContent = '';
+      lightboxGrid.innerHTML = '<p class="lightbox-empty">Für diese Kategorie sind noch keine Beispielbilder hinterlegt.</p>';
+    }
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
   }
@@ -558,6 +676,7 @@
   function openPreview(src, alt) {
     previewImg.src = src;
     previewImg.alt = alt;
+    previewWatermark.textContent = currentWatermark;
     preview.classList.add('open');
     preview.setAttribute('aria-hidden', 'false');
   }
@@ -568,8 +687,8 @@
     previewImg.src = '';
   }
 
-  document.querySelectorAll('#malerei .gallery figure[data-cat]').forEach(fig => {
-    fig.addEventListener('click', () => openLightbox(fig.dataset.cat));
+  document.querySelectorAll('.gallery figure[data-cat]').forEach(fig => {
+    fig.addEventListener('click', () => openLightbox(fig.dataset.cat, fig.dataset.group));
   });
 
   lightboxGrid.addEventListener('click', function (e) {
