@@ -8,39 +8,439 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--terracotta:#b5603f;--terracotta-dark:#8f4a30;--sand:#f3e9dc;--paper:#fbf4ea;--ink:#3a2f27;--muted:#7a6b5d;--line:#e4d2ba;--olive:#6b6a45}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Work Sans',sans-serif;background:var(--sand);color:var(--ink);line-height:1.7}h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;margin:0 0 .4em}a{color:inherit}.layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;background:var(--terracotta);color:#fff;padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between}.brand{display:flex;flex-direction:column;gap:10px}.brand img{width:56px;filter:brightness(0) invert(1);opacity:.9}.brand span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2}.side nav ul{list-style:none;padding:0;margin:36px 0 0;display:flex;flex-direction:column;gap:16px}.side nav a{color:#f6e3d6;text-decoration:none;font-size:.92rem}.side .foot{font-size:.78rem;color:#f0d4bf}.menu-toggle{display:none}main{background:var(--paper)}section{padding:70px 64px;border-bottom:1px solid var(--line)}.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0}.hero-text{padding:80px 64px}.kicker{color:var(--terracotta);text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:600}.hero h1{font-size:clamp(2.4rem,4vw,3.4rem);max-width:520px}.hero p,.lede-side,.price-note{color:var(--muted);max-width:640px}.hero-img{height:100%;min-height:520px}.hero-img img{width:100%;height:100%;object-fit:cover}.section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:35px}.section-head h2{font-size:2.1rem}.quote-strip{background:var(--olive);color:#fdf6ec;padding:64px;text-align:center}.quote-strip blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,3vw,2.1rem);max-width:760px;margin:0 auto 14px}.quote-strip cite{font-size:.85rem;text-transform:uppercase}.arbeit-row{display:grid;grid-template-columns:1fr 1fr;gap:56px}.arbeit-row .highlight{border-left:3px solid var(--terracotta);padding-left:20px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--terracotta-dark)}.vita-flex{display:flex;gap:56px;align-items:flex-start}.vita-flex img{width:220px;border-radius:4px}.vita-list{list-style:none;margin:0;padding:0;flex:1}.vita-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line)}.year{color:var(--terracotta);font-weight:600}.badge{display:inline-block;margin-left:8px;font-size:.68rem;text-transform:uppercase;background:var(--olive);color:#fff;padding:2px 8px;border-radius:20px}.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:14px}.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:4px}.gallery figure:nth-child(1){grid-column:span 3;grid-row:span 3}.gallery figure:nth-child(2),.gallery figure:nth-child(3){grid-column:span 3;grid-row:span 2}.gallery figure:nth-child(n+4){grid-column:span 2;grid-row:span 2}.gallery img{width:100%;height:100%;object-fit:cover}.gallery figcaption{position:absolute;left:10px;bottom:10px;background:rgba(58,47,39,.82);color:#fbf0e2;padding:5px 10px;border-radius:20px}.neu-strip{display:flex;gap:16px;margin-top:25px;flex-wrap:wrap}.neu-strip figure{margin:0;width:96px}.neu-strip img{width:96px;height:96px;object-fit:cover;border-radius:6px}.neu-strip figcaption{font-size:.72rem;text-align:center;line-height:1.3}.neu-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--olive);font-weight:600;margin-top:38px}.membership-note{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:25px;color:var(--muted)}.exhib-columns{columns:2;column-gap:56px}.exhib-columns .item{break-inside:avoid;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}.exhib-columns .year{width:50px;flex:none}.src{display:block;font-size:.78rem;color:var(--muted)}.contact-panel{background:var(--terracotta);color:#fff;border-radius:14px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px}.contact-panel h2{color:#fff}.contact-panel .kicker{color:#f6dcc9}.contact-panel p{color:#f6e3d6}.contact-panel a{font-weight:600;text-decoration:underline}form .field{margin-bottom:16px}form label{display:block;font-size:.82rem;color:#f6e3d6;margin-bottom:6px}form input,form textarea{width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,.4);border-radius:6px;font-family:inherit;font-size:.95rem;background:rgba(255,255,255,.12);color:#fff}form button,.save-button{background:#fff;color:var(--terracotta-dark);border:0;padding:12px 28px;border-radius:6px;font-size:.95rem;font-weight:600;cursor:pointer}.editor-bar{position:fixed;right:18px;bottom:18px;z-index:200;display:flex;gap:10px;align-items:center}.save-button{box-shadow:0 4px 16px #0003}.edit-hint{background:var(--ink);color:#fff;padding:8px 12px;border-radius:6px;font-size:.8rem}footer{background:var(--ink);color:#e6d7c7;padding:32px 64px;font-size:.85rem;display:flex;justify-content:space-between;gap:12px}
-[contenteditable="true"]{outline:2px dashed transparent;outline-offset:3px}[contenteditable="true"]:focus{outline-color:var(--terracotta)}
-@media(max-width:980px){.layout{grid-template-columns:1fr}.side{position:sticky;z-index:100;height:auto;padding:16px 20px}.brand{flex-direction:row;align-items:center}.brand img{width:32px}.brand span{font-size:1.05rem}.menu-toggle{display:block;position:absolute;right:20px;top:16px;background:transparent;border:1px solid #fff;color:#fff;padding:8px}.side nav{display:none}.side.nav-open nav{display:block}.side nav ul{margin:14px 0 0}.side .foot{display:none}.hero{grid-template-columns:1fr}.hero-img{order:-1;min-height:220px}.hero-text{padding:32px 20px}section{padding:48px 20px}.quote-strip{padding:44px 24px}.arbeit-row,.contact-panel{grid-template-columns:1fr;gap:32px}.contact-panel{padding:32px 24px}.vita-flex{flex-direction:column;gap:24px}.vita-flex img{width:140px}.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:44vw;gap:10px}.gallery figure,.gallery figure:nth-child(n){grid-column:span 1;grid-row:span 1}.exhib-columns{columns:1}footer{padding:24px 20px;flex-direction:column;text-align:center}}
+
+  /* ---------- Grundlagen ---------- */
+  :root{
+    --terracotta:#b5603f;
+    --terracotta-dark:#8f4a30;
+    --sand:#f3e9dc;
+    --paper:#fbf4ea;
+    --ink:#3a2f27;
+    --muted:#7a6b5d;
+    --line:#e4d2ba;
+    --olive:#6b6a45;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Work Sans',sans-serif;background:var(--sand);color:var(--ink);line-height:1.7;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;margin:0 0 .4em;}
+  a{color:inherit;}
+
+  /* ---------- Sidebar / Hauptmenü ---------- */
+  .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
+  .side{position:sticky;top:0;height:100vh;background:var(--terracotta);color:#fff;padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between;}
+  .brand{display:flex;flex-direction:column;gap:10px;}
+  .brand img{width:56px;filter:brightness(0) invert(1);opacity:.9;}
+  .brand span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2;}
+  .side nav ul{list-style:none;padding:0;margin:36px 0 0;display:flex;flex-direction:column;gap:16px;}
+  .side nav a{color:#f6e3d6;text-decoration:none;font-size:.92rem;}
+  .side .foot{font-size:.78rem;color:#f0d4bf;}
+  .menu-toggle{display:none;}
+
+  /* ---------- Editor-Leiste (Bearbeiten & Speichern) ---------- */
+  .editor-bar{position:fixed;right:18px;bottom:18px;z-index:200;display:flex;gap:10px;align-items:center;}
+  .edit-hint{background:var(--ink);color:#fff;padding:8px 12px;border-radius:6px;font-size:.8rem;}
+  .save-button{background:#fff;color:var(--terracotta-dark);border:0;padding:12px 28px;border-radius:6px;font-size:.95rem;font-weight:600;cursor:pointer;box-shadow:0 4px 16px #0003;}
+
+  /* ---------- Hero / Startbereich ---------- */
+  main{background:var(--paper);}
+  section{padding:70px 64px;border-bottom:1px solid var(--line);}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0;}
+  .hero-text{padding:80px 64px;}
+  .hero h1{font-size:clamp(2.4rem,4vw,3.4rem);max-width:520px;}
+  .hero p,.lede-side,.price-note{color:var(--muted);max-width:640px;}
+  .hero-img{height:100%;min-height:520px;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  /* ---------- Abschnitts-Überschriften (überall wiederverwendet) ---------- */
+  .kicker{color:var(--terracotta);text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:600;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:35px;}
+  .section-head h2{font-size:2.1rem;}
+
+  /* ---------- Zitat-Streifen ---------- */
+  .quote-strip{background:var(--olive);color:#fdf6ec;padding:64px;text-align:center;}
+  .quote-strip blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,3vw,2.1rem);max-width:760px;margin:0 auto 14px;}
+  .quote-strip cite{font-size:.85rem;text-transform:uppercase;}
+
+  /* ---------- Meine Arbeit ---------- */
+  .arbeit-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .arbeit-row .highlight{border-left:3px solid var(--terracotta);padding-left:20px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--terracotta-dark);}
+
+  /* ---------- Vita ---------- */
+  .vita-flex{display:flex;gap:56px;align-items:flex-start;}
+  .vita-flex img{width:220px;border-radius:4px;}
+  .vita-list{list-style:none;margin:0;padding:0;flex:1;}
+  .vita-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line);}
+  .year{color:var(--terracotta);font-weight:600;}
+  .badge{display:inline-block;margin-left:8px;font-size:.68rem;text-transform:uppercase;background:var(--olive);color:#fff;padding:2px 8px;border-radius:20px;}
+
+  /* ---------- Bildergalerien (Malerei / Illustration / Karten) ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:14px;}
+  .gallery figure{margin:0;position:relative;overflow:hidden;border-radius:4px;}
+  .gallery figure:nth-child(1){grid-column:span 3;grid-row:span 3;}
+  .gallery figure:nth-child(2),.gallery figure:nth-child(3){grid-column:span 3;grid-row:span 2;}
+  .gallery figure:nth-child(n+4){grid-column:span 2;grid-row:span 2;}
+  .gallery img{width:100%;height:100%;object-fit:cover;}
+  .gallery figcaption{position:absolute;left:10px;bottom:10px;background:rgba(58,47,39,.82);color:#fbf0e2;padding:5px 10px;border-radius:20px;}
+
+  /* ---------- Neuere Arbeiten (kleine Bildleiste bei Malerei) ---------- */
+  .neu-strip{display:flex;gap:16px;margin-top:25px;flex-wrap:wrap;}
+  .neu-strip figure{margin:0;width:96px;}
+  .neu-strip img{width:96px;height:96px;object-fit:cover;border-radius:6px;}
+  .neu-strip figcaption{font-size:.72rem;text-align:center;line-height:1.3;}
+  .neu-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--olive);font-weight:600;margin-top:38px;}
+
+  /* ---------- Ausstellungen ---------- */
+  .membership-note{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:25px;color:var(--muted);}
+  .exhib-columns{columns:2;column-gap:56px;}
+  .exhib-columns .item{break-inside:avoid;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);}
+  .exhib-columns .year{width:50px;flex:none;}
+  .src{display:block;font-size:.78rem;color:var(--muted);}
+
+  /* ---------- Kontakt & Formular ---------- */
+  .contact-panel{background:var(--terracotta);color:#fff;border-radius:14px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .contact-panel h2{color:#fff;}
+  .contact-panel .kicker{color:#f6dcc9;}
+  .contact-panel p{color:#f6e3d6;}
+  .contact-panel a{font-weight:600;text-decoration:underline;}
+  form .field{margin-bottom:16px;}
+  form label{display:block;font-size:.82rem;color:#f6e3d6;margin-bottom:6px;}
+  form input,form textarea{width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,.4);border-radius:6px;font-family:inherit;font-size:.95rem;background:rgba(255,255,255,.12);color:#fff;}
+  form button{background:#fff;color:var(--terracotta-dark);border:0;padding:12px 28px;border-radius:6px;font-size:.95rem;font-weight:600;cursor:pointer;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:#e6d7c7;padding:32px 64px;font-size:.85rem;display:flex;justify-content:space-between;gap:12px;}
+
+  /* ---------- Bearbeitbare Texte (contenteditable) ---------- */
+  [contenteditable="true"]{outline:2px dashed transparent;outline-offset:3px;}
+  [contenteditable="true"]:focus{outline-color:var(--terracotta);}
+
+  /* ---------- Mobile (≤980px) ---------- */
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;}
+    .side{position:sticky;z-index:100;height:auto;padding:16px 20px;}
+    .brand{flex-direction:row;align-items:center;}
+    .brand img{width:32px;}
+    .brand span{font-size:1.05rem;}
+    .menu-toggle{display:block;position:absolute;right:20px;top:16px;background:transparent;border:1px solid #fff;color:#fff;padding:8px;}
+    .side nav{display:none;}
+    .side.nav-open nav{display:block;}
+    .side nav ul{margin:14px 0 0;}
+    .side .foot{display:none;}
+    .hero{grid-template-columns:1fr;}
+    .hero-img{order:-1;min-height:220px;}
+    .hero-text{padding:32px 20px;}
+    section{padding:48px 20px;}
+    .quote-strip{padding:44px 24px;}
+    .arbeit-row,.contact-panel{grid-template-columns:1fr;gap:32px;}
+    .contact-panel{padding:32px 24px;}
+    .vita-flex{flex-direction:column;gap:24px;}
+    .vita-flex img{width:140px;}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:44vw;gap:10px;}
+    .gallery figure,.gallery figure:nth-child(n){grid-column:span 1;grid-row:span 1;}
+    .exhib-columns{columns:1;}
+    footer{padding:24px 20px;flex-direction:column;text-align:center;}
+  }
+
 </style>
 </head>
 <body>
-<div class="editor-bar"><span class="edit-hint">Texte anklicken und bearbeiten</span><button class="save-button" id="save-html" type="button">HTML mit Änderungen speichern</button></div>
-<div class="layout"><aside class="side"><div><div class="brand"><img src="images/logo.png" alt="Logo"><span contenteditable="true">Babette<br>Klingenberg</span></div><button class="menu-toggle" type="button" aria-label="Menü öffnen">☰</button><nav><ul><li><a href="#home" contenteditable="true">Home</a></li><li><a href="#vita" contenteditable="true">Vita</a></li><li><a href="#arbeit" contenteditable="true">Meine Arbeit</a></li><li><a href="#malerei" contenteditable="true">Malerei</a></li><li><a href="#illustration" contenteditable="true">Illustration</a></li><li><a href="#karten" contenteditable="true">Karten</a></li><li><a href="#ausstellungen" contenteditable="true">Ausstellungen</a></li><li><a href="#kontakt" contenteditable="true">Kontakt</a></li></ul></nav></div><div class="foot" contenteditable="true">Atelier München<br>Oppenriederstraße 47</div></aside>
-<main><section id="home" class="hero"><div class="hero-text"><div class="kicker" contenteditable="true">Malerei · Illustration · Grafik</div><h1 contenteditable="true">Ein Atelier voller Farbe, Geschichten und Struktur</h1><p contenteditable="true">Seit über 30 Jahren übersetzt Babette Klingenberg Natur, Reisen und Stimmungen in Bilder – von handgemalten Unikaten bis zu liebevollen Kinderillustrationen. Heute aktiv als Mitglied der Künstlerpalette Unterschleißheim und als Dozentin für Acrylmalerei.</p></div><div class="hero-img"><img src="images/painting/painting6_pflanzlich_thumb.jpg" alt="Gemälde, pflanzliches Motiv"></div></section>
-<div class="quote-strip"><blockquote contenteditable="true">„Die Ausübung der Kunst ist ein großer Teil meines Ichs, es ist mir die Luft, mit der ich atme.“</blockquote><cite contenteditable="true">Clara Schumann</cite></div>
-<section id="arbeit"><div class="section-head"><h2 contenteditable="true">Meine Arbeit</h2><span class="kicker" contenteditable="true">Über mich</span></div><div class="arbeit-row"><div><p contenteditable="true">Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit Illustration und Malerei beschäftigt. Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen.</p><p contenteditable="true">Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion. Auf Künstlermärkten präsentiere ich kleinformatige Bilder.</p></div><div><p class="highlight" contenteditable="true">„Inspiriert werde ich von der Natur, von Landschaften, auf Reisen, von Stimmungen in den verschiedenen Jahreszeiten.“</p><p contenteditable="true">Elemente aus der Natur wie Holz, Steine und alte Mauern sind ein Grundstock für meine Bilder. Die Stile variieren von abstrakt bis hin zu figürlich und pflanzlichen Motiven.</p></div></div></section>
-<section id="vita"><div class="section-head"><h2 contenteditable="true">Vita</h2><span class="kicker" contenteditable="true">Werdegang</span></div><div class="vita-flex"><img src="images/portrait.jpg" alt="Portrait Babette Klingenberg"><ul class="vita-list"><li><span class="year" contenteditable="true">1961</span><span contenteditable="true">Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li><li><span class="year" contenteditable="true">1982</span><span contenteditable="true">Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li><li><span class="year" contenteditable="true">1983</span><span contenteditable="true">Studium der Malerei an der Akademie Roederer, Paris</span></li><li><span class="year" contenteditable="true">1987</span><span contenteditable="true">Diplom für Kommunikationsdesign an der FH Augsburg</span></li><li><span class="year" contenteditable="true">1988–1992</span><span contenteditable="true">Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li><li><span class="year" contenteditable="true">seit 2003</span><span contenteditable="true">Kurse für Malerei/Abstraktion; regelmäßige Einzelausstellungen</span></li><li><span class="year" contenteditable="true">seit 2008</span><span contenteditable="true">Mitglied im Künstlerkreis Neuried <span class="badge" contenteditable="true">aktuell</span></span></li><li><span class="year" contenteditable="true">seit 2017</span><span contenteditable="true">Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990) <span class="badge" contenteditable="true">aktuell</span></span></li></ul></div></section>
-<section id="malerei"><div class="section-head"><h2 contenteditable="true">Malerei</h2><span class="lede-side" contenteditable="true">Ob dekorativ, figürlich oder konkret – ich male je nach Stimmung in verschiedenen Genres.</span></div><div class="gallery"><figure><img src="images/painting/painting5_figuerlich_thumb.jpg" alt="Figürlich"><figcaption contenteditable="true">Figürlich</figcaption></figure><figure><img src="images/painting/painting4_abstrakt_thumb.jpg" alt="Abstrakt"><figcaption contenteditable="true">Abstrakt</figcaption></figure><figure><img src="images/painting/painting3_dekorativ_thumb.jpg" alt="Dekorativ"><figcaption contenteditable="true">Dekorativ</figcaption></figure><figure><img src="images/painting/painting1_spachtel_thumb.jpg" alt="Spachteltechnik"><figcaption contenteditable="true">Spachteltechnik</figcaption></figure><figure><img src="images/painting/painting2_konkret_thumb.jpg" alt="Konkret"><figcaption contenteditable="true">Konkret</figcaption></figure><figure><img src="images/painting/painting6_pflanzlich_thumb.jpg" alt="Pflanzlich"><figcaption contenteditable="true">Pflanzlich</figcaption></figure></div><p class="price-note" contenteditable="true">Falls Ihnen eines der Bilder gefällt, fertige ich es gerne nach Maß oder in gewünschten Farben an. Auf Wunsch berate ich Sie mit einer Bildauswahl vor Ort.</p><div class="neu-label" contenteditable="true">Neuere Arbeiten (Auswahl, Acryl auf Leinwand)</div><div class="neu-strip"><figure><img src="images/portfolio-neu/mysterium.jpeg" alt="Mysterium"><figcaption contenteditable="true">„Mysterium“<br>70 × 50 cm</figcaption></figure><figure><img src="images/portfolio-neu/fruehling.jpeg" alt="Frühling"><figcaption contenteditable="true">„Frühling“<br>100 × 80 cm</figcaption></figure><figure><img src="images/portfolio-neu/wolken.jpeg" alt="Wolken"><figcaption contenteditable="true">„Wolken“<br>120 × 100 cm</figcaption></figure><figure><img src="images/portfolio-neu/dashaus.jpeg" alt="Das Haus"><figcaption contenteditable="true">„Das Haus“<br>50 × 50 cm</figcaption></figure><figure><img src="images/portfolio-neu/freude.jpeg" alt="Freude"><figcaption contenteditable="true">„Freude“<br>60 × 80 cm</figcaption></figure></div></section>
-<section id="illustration"><div class="section-head"><h2 contenteditable="true">Illustration</h2><span class="lede-side" contenteditable="true">Aquarell, Buntstift, Gouache, Tusche und Acryl – für Geschichten, Rätsel und Bastelanleitungen.</span></div><div class="gallery"><figure><img src="images/illustration/illustration1_tiere_thumb.jpg" alt="Tiere"><figcaption contenteditable="true">Tiere</figcaption></figure><figure><img src="images/illustration/illustration4_kinderbuecher_thumb.jpg" alt="Kinderbücher"><figcaption contenteditable="true">Kinderbücher</figcaption></figure><figure><img src="images/illustration/illustration6_menschen_thumb.jpg" alt="Menschen"><figcaption contenteditable="true">Menschen</figcaption></figure><figure><img src="images/illustration/illustration2_kalender_thumb.jpg" alt="Kalender"><figcaption contenteditable="true">Kalender</figcaption></figure><figure><img src="images/illustration/illustration3_basteln_thumb.jpg" alt="Rätseln und Basteln"><figcaption contenteditable="true">Rätseln &amp; Basteln</figcaption></figure><figure><img src="images/illustration/illustration5_schwarzweiss_thumb.jpg" alt="Schwarz-Weiß"><figcaption contenteditable="true">Schwarz-Weiß</figcaption></figure></div><p class="price-note" contenteditable="true">Teilweise werden die Bilder digital weiterbearbeitet. Ergänzend biete ich auch Layoutarbeiten an.</p></section>
-<section id="karten"><div class="section-head"><h2 contenteditable="true">Karten &amp; Kalender</h2><span class="lede-side" contenteditable="true">Motive aus einer Mischung von Malerei und Illustration – auch als individueller Auftrag.</span></div><div class="gallery"><figure><img src="images/cards/cards3_glueckwunsch_thumb.jpg" alt="Herzlichen Glückwunsch"><figcaption contenteditable="true">Glückwunsch</figcaption></figure><figure><img src="images/cards/cards6_weihnachten_thumb.jpg" alt="Weihnachten"><figcaption contenteditable="true">Weihnachten</figcaption></figure><figure><img src="images/cards/cards4_geburtstag_thumb.jpg" alt="Geburtstag"><figcaption contenteditable="true">Geburtstag</figcaption></figure><figure><img src="images/cards/cards1_ohnetext_thumb.jpg" alt="Ohne Text"><figcaption contenteditable="true">Ohne Text</figcaption></figure><figure><img src="images/cards/cards5_allesliebe_thumb.jpg" alt="Alles Liebe"><figcaption contenteditable="true">Alles Liebe</figcaption></figure><figure><img src="images/cards/cards2_anderetexte_thumb.jpg" alt="Andere Texte"><figcaption contenteditable="true">Andere Texte</figcaption></figure></div><p class="price-note" contenteditable="true">Bestellung mit Angabe von Nummer und Anzahl über das Kontaktformular. Karte + Kuvert 2,50 € zzgl. Versand · Kalender 8,00 € zzgl. Versand.</p></section>
-<section id="ausstellungen"><div class="section-head"><h2 contenteditable="true">Ausstellungen</h2><span class="kicker" contenteditable="true">Werkschau</span></div><div class="membership-note" contenteditable="true"><strong>Aktuell aktiv:</strong> Seit 2008 Mitglied im Künstlerkreis Neuried, seit 2017 Mitglied der Künstlerpalette Unterschleißheim (ART).</div><div class="exhib-columns"><div class="item"><span class="year" contenteditable="true">2025</span><span contenteditable="true">„Fantasie und Realität“ – 35 Jahre ART Unterschleißheimer Künstlerpalette, Landratsamt München <span class="src" contenteditable="true">Quelle: Wochenanzeiger, Aug. 2025</span></span></div><div class="item"><span class="year" contenteditable="true">2017</span><span contenteditable="true">„eigenARTig“ Jahresausstellung, Kunstkreis im K&amp;K, Neuried</span></div><div class="item"><span class="year" contenteditable="true">2011</span><span contenteditable="true">Künstlerkreis Neuried</span></div><div class="item"><span class="year" contenteditable="true">2010</span><span contenteditable="true">Klinikum Starnberg, München</span></div><div class="item"><span class="year" contenteditable="true">2009</span><span contenteditable="true">Tech Data, München</span></div><div class="item"><span class="year" contenteditable="true">2008</span><span contenteditable="true">Kleine Galerie, Neuried</span></div><div class="item"><span class="year" contenteditable="true">2007</span><span contenteditable="true">Stadtbibliothek Fürstenried</span></div><div class="item"><span class="year" contenteditable="true">2005</span><span contenteditable="true">Stadtbibliothek Fürstenried</span></div></div></section>
-<section id="kontakt"><div class="contact-panel"><div><span class="kicker" contenteditable="true">Anfrage</span><h2 contenteditable="true">Kontakt</h2><p contenteditable="true">Babette Klingenberg<br>Oppenriederstraße 47<br>81477 München</p><p contenteditable="true">Tel: 089 / 78 65 80<br>E-Mail: info@babette-klingenberg.de</p></div><form><div class="field"><label for="name2" contenteditable="true">Name</label><input id="name2" type="text" placeholder="Ihr Name"></div><div class="field"><label for="email2" contenteditable="true">E-Mail</label><input id="email2" type="email" placeholder="ihre@email.de"></div><div class="field"><label for="nachricht2" contenteditable="true">Nachricht</label><textarea id="nachricht2" rows="4" placeholder="Ihre Nachricht"></textarea></div><button type="button" contenteditable="true">Senden</button></form></div></section><footer><div contenteditable="true">© Babette Klingenberg</div><div contenteditable="true">Impressum &amp; Kontakt</div></footer></main></div>
+
+<!-- ============================================================ -->
+<!-- Editor-Leiste: Hinweistext + "HTML speichern"-Button          -->
+<!-- ============================================================ -->
+<div class="editor-bar">
+  <span class="edit-hint">Texte anklicken und bearbeiten</span>
+  <button class="save-button" id="save-html" type="button">HTML mit Änderungen speichern</button>
+</div>
+
+<div class="layout">
+
+  <!-- ============================================================ -->
+  <!-- Hauptmenü (Sidebar)                                           -->
+  <!-- ============================================================ -->
+  <aside class="side">
+    <div>
+      <div class="brand">
+        <img src="images/logo.png" alt="Logo">
+        <span contenteditable="true">Babette<br>Klingenberg</span>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#home" contenteditable="true">Home</a></li>
+          <li><a href="#vita" contenteditable="true">Vita</a></li>
+          <li><a href="#arbeit" contenteditable="true">Meine Arbeit</a></li>
+          <li><a href="#malerei" contenteditable="true">Malerei</a></li>
+          <li><a href="#illustration" contenteditable="true">Illustration</a></li>
+          <li><a href="#karten" contenteditable="true">Karten</a></li>
+          <li><a href="#ausstellungen" contenteditable="true">Ausstellungen</a></li>
+          <li><a href="#kontakt" contenteditable="true">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot" contenteditable="true">Atelier München<br>Oppenriederstraße 47</div>
+  </aside>
+
+  <main>
+
+    <!-- ============================================================ -->
+    <!-- Hero / Startseite                                             -->
+    <!-- ============================================================ -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <div class="kicker" contenteditable="true">Malerei · Illustration · Grafik</div>
+        <h1 contenteditable="true">Ein Atelier voller Farbe, Geschichten und Struktur</h1>
+        <p contenteditable="true">Seit über 30 Jahren übersetzt Babette Klingenberg Natur, Reisen und Stimmungen in Bilder – von handgemalten Unikaten bis zu liebevollen Kinderillustrationen. Heute aktiv als Mitglied der Künstlerpalette Unterschleißheim und als Dozentin für Acrylmalerei.</p>
+      </div>
+      <div class="hero-img">
+        <img src="images/painting/painting6_pflanzlich_thumb.jpg" alt="Gemälde, pflanzliches Motiv">
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Zitat (Clara Schumann)                                        -->
+    <!-- ============================================================ -->
+    <div class="quote-strip">
+      <blockquote contenteditable="true">„Die Ausübung der Kunst ist ein großer Teil meines Ichs, es ist mir die Luft, mit der ich atme.“</blockquote>
+      <cite contenteditable="true">Clara Schumann</cite>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Meine Arbeit                                                  -->
+    <!-- ============================================================ -->
+    <section id="arbeit">
+      <div class="section-head">
+        <h2 contenteditable="true">Meine Arbeit</h2>
+        <span class="kicker" contenteditable="true">Über mich</span>
+      </div>
+      <div class="arbeit-row">
+        <div>
+          <p contenteditable="true">Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit Illustration und Malerei beschäftigt. Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen.</p>
+          <p contenteditable="true">Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion. Auf Künstlermärkten präsentiere ich kleinformatige Bilder.</p>
+        </div>
+        <div>
+          <p class="highlight" contenteditable="true">„Inspiriert werde ich von der Natur, von Landschaften, auf Reisen, von Stimmungen in den verschiedenen Jahreszeiten.“</p>
+          <p contenteditable="true">Elemente aus der Natur wie Holz, Steine und alte Mauern sind ein Grundstock für meine Bilder. Die Stile variieren von abstrakt bis hin zu figürlich und pflanzlichen Motiven.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Vita                                                          -->
+    <!-- ============================================================ -->
+    <section id="vita">
+      <div class="section-head">
+        <h2 contenteditable="true">Vita</h2>
+        <span class="kicker" contenteditable="true">Werdegang</span>
+      </div>
+      <div class="vita-flex">
+        <img src="images/portrait.jpg" alt="Portrait Babette Klingenberg">
+        <ul class="vita-list">
+          <li><span class="year" contenteditable="true">1961</span><span contenteditable="true">Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li>
+          <li><span class="year" contenteditable="true">1982</span><span contenteditable="true">Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li>
+          <li><span class="year" contenteditable="true">1983</span><span contenteditable="true">Studium der Malerei an der Akademie Roederer, Paris</span></li>
+          <li><span class="year" contenteditable="true">1987</span><span contenteditable="true">Diplom für Kommunikationsdesign an der FH Augsburg</span></li>
+          <li><span class="year" contenteditable="true">1988–1992</span><span contenteditable="true">Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li>
+          <li><span class="year" contenteditable="true">seit 2003</span><span contenteditable="true">Kurse für Malerei/Abstraktion; regelmäßige Einzelausstellungen</span></li>
+          <li><span class="year" contenteditable="true">seit 2008</span><span contenteditable="true">Mitglied im Künstlerkreis Neuried <span class="badge" contenteditable="true">aktuell</span></span></li>
+          <li><span class="year" contenteditable="true">seit 2017</span><span contenteditable="true">Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990) <span class="badge" contenteditable="true">aktuell</span></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Malerei                                                       -->
+    <!-- ============================================================ -->
+    <section id="malerei">
+      <div class="section-head">
+        <h2 contenteditable="true">Malerei</h2>
+        <span class="lede-side" contenteditable="true">Ob dekorativ, figürlich oder konkret – ich male je nach Stimmung in verschiedenen Genres.</span>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/painting/painting5_figuerlich_thumb.jpg" alt="Figürlich"><figcaption contenteditable="true">Figürlich</figcaption></figure>
+        <figure><img src="images/painting/painting4_abstrakt_thumb.jpg" alt="Abstrakt"><figcaption contenteditable="true">Abstrakt</figcaption></figure>
+        <figure><img src="images/painting/painting3_dekorativ_thumb.jpg" alt="Dekorativ"><figcaption contenteditable="true">Dekorativ</figcaption></figure>
+        <figure><img src="images/painting/painting1_spachtel_thumb.jpg" alt="Spachteltechnik"><figcaption contenteditable="true">Spachteltechnik</figcaption></figure>
+        <figure><img src="images/painting/painting2_konkret_thumb.jpg" alt="Konkret"><figcaption contenteditable="true">Konkret</figcaption></figure>
+        <figure><img src="images/painting/painting6_pflanzlich_thumb.jpg" alt="Pflanzlich"><figcaption contenteditable="true">Pflanzlich</figcaption></figure>
+      </div>
+      <p class="price-note" contenteditable="true">Falls Ihnen eines der Bilder gefällt, fertige ich es gerne nach Maß oder in gewünschten Farben an. Auf Wunsch berate ich Sie mit einer Bildauswahl vor Ort.</p>
+
+      <div class="neu-label" contenteditable="true">Neuere Arbeiten (Auswahl, Acryl auf Leinwand)</div>
+      <div class="neu-strip">
+        <figure><img src="images/portfolio-neu/mysterium.jpeg" alt="Mysterium"><figcaption contenteditable="true">„Mysterium“<br>70 × 50 cm</figcaption></figure>
+        <figure><img src="images/portfolio-neu/fruehling.jpeg" alt="Frühling"><figcaption contenteditable="true">„Frühling“<br>100 × 80 cm</figcaption></figure>
+        <figure><img src="images/portfolio-neu/wolken.jpeg" alt="Wolken"><figcaption contenteditable="true">„Wolken“<br>120 × 100 cm</figcaption></figure>
+        <figure><img src="images/portfolio-neu/dashaus.jpeg" alt="Das Haus"><figcaption contenteditable="true">„Das Haus“<br>50 × 50 cm</figcaption></figure>
+        <figure><img src="images/portfolio-neu/freude.jpeg" alt="Freude"><figcaption contenteditable="true">„Freude“<br>60 × 80 cm</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Illustration                                                  -->
+    <!-- ============================================================ -->
+    <section id="illustration">
+      <div class="section-head">
+        <h2 contenteditable="true">Illustration</h2>
+        <span class="lede-side" contenteditable="true">Aquarell, Buntstift, Gouache, Tusche und Acryl – für Geschichten, Rätsel und Bastelanleitungen.</span>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/illustration/illustration1_tiere_thumb.jpg" alt="Tiere"><figcaption contenteditable="true">Tiere</figcaption></figure>
+        <figure><img src="images/illustration/illustration4_kinderbuecher_thumb.jpg" alt="Kinderbücher"><figcaption contenteditable="true">Kinderbücher</figcaption></figure>
+        <figure><img src="images/illustration/illustration6_menschen_thumb.jpg" alt="Menschen"><figcaption contenteditable="true">Menschen</figcaption></figure>
+        <figure><img src="images/illustration/illustration2_kalender_thumb.jpg" alt="Kalender"><figcaption contenteditable="true">Kalender</figcaption></figure>
+        <figure><img src="images/illustration/illustration3_basteln_thumb.jpg" alt="Rätseln und Basteln"><figcaption contenteditable="true">Rätseln &amp; Basteln</figcaption></figure>
+        <figure><img src="images/illustration/illustration5_schwarzweiss_thumb.jpg" alt="Schwarz-Weiß"><figcaption contenteditable="true">Schwarz-Weiß</figcaption></figure>
+      </div>
+      <p class="price-note" contenteditable="true">Teilweise werden die Bilder digital weiterbearbeitet. Ergänzend biete ich auch Layoutarbeiten an.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Karten & Kalender                                             -->
+    <!-- ============================================================ -->
+    <section id="karten">
+      <div class="section-head">
+        <h2 contenteditable="true">Karten &amp; Kalender</h2>
+        <span class="lede-side" contenteditable="true">Motive aus einer Mischung von Malerei und Illustration – auch als individueller Auftrag.</span>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/cards/cards3_glueckwunsch_thumb.jpg" alt="Herzlichen Glückwunsch"><figcaption contenteditable="true">Glückwunsch</figcaption></figure>
+        <figure><img src="images/cards/cards6_weihnachten_thumb.jpg" alt="Weihnachten"><figcaption contenteditable="true">Weihnachten</figcaption></figure>
+        <figure><img src="images/cards/cards4_geburtstag_thumb.jpg" alt="Geburtstag"><figcaption contenteditable="true">Geburtstag</figcaption></figure>
+        <figure><img src="images/cards/cards1_ohnetext_thumb.jpg" alt="Ohne Text"><figcaption contenteditable="true">Ohne Text</figcaption></figure>
+        <figure><img src="images/cards/cards5_allesliebe_thumb.jpg" alt="Alles Liebe"><figcaption contenteditable="true">Alles Liebe</figcaption></figure>
+        <figure><img src="images/cards/cards2_anderetexte_thumb.jpg" alt="Andere Texte"><figcaption contenteditable="true">Andere Texte</figcaption></figure>
+      </div>
+      <p class="price-note" contenteditable="true">Bestellung mit Angabe von Nummer und Anzahl über das Kontaktformular. Karte + Kuvert 2,50 € zzgl. Versand · Kalender 8,00 € zzgl. Versand.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Ausstellungen                                                 -->
+    <!-- ============================================================ -->
+    <section id="ausstellungen">
+      <div class="section-head">
+        <h2 contenteditable="true">Ausstellungen</h2>
+        <span class="kicker" contenteditable="true">Werkschau</span>
+      </div>
+      <div class="membership-note" contenteditable="true"><strong>Aktuell aktiv:</strong> Seit 2008 Mitglied im Künstlerkreis Neuried, seit 2017 Mitglied der Künstlerpalette Unterschleißheim (ART).</div>
+      <div class="exhib-columns">
+        <div class="item">
+          <span class="year" contenteditable="true">2025</span>
+          <span contenteditable="true">„Fantasie und Realität“ – 35 Jahre ART Unterschleißheimer Künstlerpalette, Landratsamt München <span class="src" contenteditable="true">Quelle: Wochenanzeiger, Aug. 2025</span></span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2017</span>
+          <span contenteditable="true">„eigenARTig“ Jahresausstellung, Kunstkreis im K&amp;K, Neuried</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2011</span>
+          <span contenteditable="true">Künstlerkreis Neuried</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2010</span>
+          <span contenteditable="true">Klinikum Starnberg, München</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2009</span>
+          <span contenteditable="true">Tech Data, München</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2008</span>
+          <span contenteditable="true">Kleine Galerie, Neuried</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2007</span>
+          <span contenteditable="true">Stadtbibliothek Fürstenried</span>
+        </div>
+        <div class="item">
+          <span class="year" contenteditable="true">2005</span>
+          <span contenteditable="true">Stadtbibliothek Fürstenried</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Kontakt                                                       -->
+    <!-- ============================================================ -->
+    <section id="kontakt">
+      <div class="contact-panel">
+        <div>
+          <span class="kicker" contenteditable="true">Anfrage</span>
+          <h2 contenteditable="true">Kontakt</h2>
+          <p contenteditable="true">Babette Klingenberg<br>Oppenriederstraße 47<br>81477 München</p>
+          <p contenteditable="true">Tel: 089 / 78 65 80<br>E-Mail: info@babette-klingenberg.de</p>
+        </div>
+        <form>
+          <div class="field">
+            <label for="name2" contenteditable="true">Name</label>
+            <input id="name2" type="text" placeholder="Ihr Name">
+          </div>
+          <div class="field">
+            <label for="email2" contenteditable="true">E-Mail</label>
+            <input id="email2" type="email" placeholder="ihre@email.de">
+          </div>
+          <div class="field">
+            <label for="nachricht2" contenteditable="true">Nachricht</label>
+            <textarea id="nachricht2" rows="4" placeholder="Ihre Nachricht"></textarea>
+          </div>
+          <button type="button" contenteditable="true">Senden</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                        -->
+    <!-- ============================================================ -->
+    <footer>
+      <div contenteditable="true">© Babette Klingenberg</div>
+      <div contenteditable="true">Impressum &amp; Kontakt</div>
+    </footer>
+
+  </main>
+</div>
+
 <script>
-(function(){
-  const side=document.querySelector('.side'),toggle=document.querySelector('.menu-toggle');
-  toggle.addEventListener('click',()=>side.classList.toggle('nav-open'));
-  document.querySelectorAll('.side nav a').forEach(a=>a.addEventListener('click',()=>side.classList.remove('nav-open')));
-  document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>el.setAttribute('value',el.value)));
-  document.getElementById('save-html').addEventListener('click',function(){
-    const bar=document.querySelector('.editor-bar');bar.style.display='none';
-    document.querySelectorAll('[contenteditable="true"]').forEach(el=>el.removeAttribute('contenteditable'));
-    document.querySelectorAll('input,textarea').forEach(el=>{if(el.tagName==='TEXTAREA')el.textContent=el.value;else el.setAttribute('value',el.value)});
-    const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-    const blob=new Blob([html],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url;a.download='index.html';a.click();URL.revokeObjectURL(url);
-    bar.style.display='flex';
+(function () {
+  const side = document.querySelector('.side');
+  const toggle = document.querySelector('.menu-toggle');
+
+  toggle.addEventListener('click', () => side.classList.toggle('nav-open'));
+
+  document.querySelectorAll('.side nav a').forEach(a =>
+    a.addEventListener('click', () => side.classList.remove('nav-open'))
+  );
+
+  // Eingaben in Formularfeldern als "value"-Attribut mitschreiben,
+  // damit sie im heruntergeladenen HTML erhalten bleiben.
+  document.querySelectorAll('input,textarea').forEach(el =>
+    el.addEventListener('input', () => el.setAttribute('value', el.value))
+  );
+
+  document.getElementById('save-html').addEventListener('click', function () {
+    const bar = document.querySelector('.editor-bar');
+    bar.style.display = 'none';
+
+    document.querySelectorAll('[contenteditable="true"]').forEach(el =>
+      el.removeAttribute('contenteditable')
+    );
+    document.querySelectorAll('input,textarea').forEach(el => {
+      if (el.tagName === 'TEXTAREA') el.textContent = el.value;
+      else el.setAttribute('value', el.value);
+    });
+
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'index.html';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    bar.style.display = 'flex';
   });
 })();
 </script>
-</body></html>
+</body>
+</html>
