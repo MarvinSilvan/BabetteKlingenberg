@@ -68,7 +68,6 @@
   .vita-list{list-style:none;margin:0;padding:0;flex:1;}
   .vita-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line);}
   .year{color:var(--terracotta);font-weight:600;}
-  .badge{display:inline-block;margin-left:8px;font-size:.68rem;text-transform:uppercase;background:var(--olive);color:#fff;padding:2px 8px;border-radius:20px;}
 
   /* ---------- Bildergalerien (Malerei / Illustration / Karten) ---------- */
   .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:14px;}
@@ -121,7 +120,18 @@
   .lightbox-inner h3{margin-top:0;font-size:1.8rem;}
   .lightbox-count{color:var(--muted);font-size:.9rem;margin:-8px 0 0;}
   .lightbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:20px;}
-  .lightbox-grid img{width:100%;height:220px;object-fit:cover;border-radius:6px;display:block;background:var(--sand);}
+  .lightbox-grid img{width:100%;height:220px;object-fit:cover;border-radius:6px;display:block;background:var(--sand);cursor:zoom-in;}
+
+  /* ---------- Bildvorschau (großes Bild mit Wasserzeichen) ---------- */
+  .preview{display:none;position:fixed;inset:0;background:rgba(10,8,6,.92);z-index:600;align-items:center;justify-content:center;padding:40px 20px;}
+  .preview.open{display:flex;}
+  .preview-frame{position:relative;max-width:min(1100px,92vw);max-height:88vh;}
+  .preview-frame img{display:block;max-width:100%;max-height:88vh;border-radius:6px;object-fit:contain;}
+  .preview-watermark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;}
+  .preview-watermark span{color:rgba(255,255,255,.55);font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3vw,1.9rem);letter-spacing:.08em;white-space:nowrap;transform:rotate(-24deg);text-shadow:0 2px 10px rgba(0,0,0,.55);}
+  .preview-close{position:absolute;top:-18px;right:-18px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;}
+  .preview-close:hover{background:var(--terracotta-dark);}
+  @media (max-width:600px){.preview-close{top:-14px;right:0;}}
 
   /* ---------- Mobile (≤980px) ---------- */
   @media (max-width:980px){
@@ -174,14 +184,13 @@
           <li><a href="#vita">Vita</a></li>
           <li><a href="#arbeit">Meine Arbeit</a></li>
           <li><a href="#malerei">Malerei</a></li>
-          <li><a href="#illustration">Illustration</a></li>
-          <li><a href="#karten">Karten</a></li>
+          <li><a href="#karten">Illustrationen</a></li>
           <li><a href="#ausstellungen">Ausstellungen</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
     </div>
-    <div class="foot">Atelier München<br>Oppenriederstraße 47</div>
+    <div class="foot">Atelier Unterschleißheim<br>Stadionstraße 82</div>
   </aside>
 
   <main>
@@ -195,7 +204,7 @@
         <h1>Ein Atelier voller Farbe, Geschichten und Struktur</h1>
         <p>Willkommen in meiner Welt aus Farbe, Struktur und Licht.</p>
         <p>Seit über 35 Jahren übersetze ich Natur, Reisen und Stimmungen in Bilder – von großformatigen Unikaten bis zu liebevollen Illustrationen für Kinder und Erwachsene. Heute bin ich aktiv als Mitglied der Künstlerpalette Unterschleißheim und im Künstlerkreis Neuried. Als Dozentin für Acrylmalerei unterrichte ich Erwachsene an diversen Institutionen im Raum München.</p>
-        <p>Jedes Bild ist ein Unikat in Acryl auf Leinwand oder Holz, entstanden in meinem Atelier.</p>
+        <p>Meine Malerei bewegt sich zwischen Abstraktion und Figuration. Mich faszinieren architektonische Formen, das Spiel von Licht und Schatten und die stille Begegnung von Menschen im Raum. Schicht für Schicht baue ich meine Bilder auf, bis eine Stimmung entsteht, die den Betrachter einlädt, innezuhalten.</p>
       </div>
       <div class="hero-img">
         <img src="images/hero_atelier.jpg" alt="Gemälde mit Zypressen und Sonnenlicht">
@@ -228,7 +237,7 @@
         </div>
         <div>
           <p class="highlight">„Inspiriert werde ich von der Beobachtung meiner Umwelt, von Landschaften, Reisen, Stimmungen in den verschiedenen Jahreszeiten.“</p>
-          <p>Meine Malerei bewegt sich zwischen Abstraktion und Figuration. Mich faszinieren architektonische Formen, das Spiel von Licht und Schatten und die stille Begegnung von Menschen im Raum. Schicht für Schicht baue ich meine Bilder auf, bis eine Stimmung entsteht, die den Betrachter einlädt, innezuhalten.</p>
+          <p>Bevor ich mit dem Malen beginne, strukturiere ich die Leinwand mit verschiedenen Materialien wie Sand, Servietten oder Folien. So entstehen Bilder mit ganz unterschiedlichen Anmutungen und Oberflächen – jedes Werk erhält seine eigene Tiefe und Haptik.</p>
         </div>
       </div>
     </section>
@@ -251,8 +260,8 @@
           <li><span class="year">1988–1992</span><span>Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li>
           <li><span class="year">seit 2003</span><span>Regelmäßige Einzel- und Gruppenausstellungen</span></li>
           <li><span class="year">seit 2004</span><span>Kurse für Acrylmalerei an unterschiedlichen VHS Institutionen und im ASZ München Solln</span></li>
-          <li><span class="year">seit 2008</span><span>Mitglied im Künstlerkreis Neuried <span class="badge">aktuell</span></span></li>
-          <li><span class="year">seit 2017</span><span>Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990) <span class="badge">aktuell</span></span></li>
+          <li><span class="year">seit 2008</span><span>Mitglied im Künstlerkreis Neuried</span></li>
+          <li><span class="year">seit 2017</span><span>Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990)</span></li>
         </ul>
       </div>
     </section>
@@ -286,30 +295,11 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- Illustration                                                  -->
-    <!-- ============================================================ -->
-    <section id="illustration">
-      <div class="section-head">
-        <h2>Illustration</h2>
-        <span class="lede-side">Aquarell, Buntstift, Gouache, Tusche und Acryl – für Geschichten, Rätsel und Bastelanleitungen.</span>
-      </div>
-      <div class="gallery">
-        <figure><img src="images/illustration/illustration1_tiere_thumb.jpg" alt="Tiere"><figcaption>Tiere</figcaption></figure>
-        <figure><img src="images/illustration/illustration4_kinderbuecher_thumb.jpg" alt="Kinderbücher"><figcaption>Kinderbücher</figcaption></figure>
-        <figure><img src="images/illustration/illustration6_menschen_thumb.jpg" alt="Menschen"><figcaption>Menschen</figcaption></figure>
-        <figure><img src="images/illustration/illustration2_kalender_thumb.jpg" alt="Kalender"><figcaption>Kalender</figcaption></figure>
-        <figure><img src="images/illustration/illustration3_basteln_thumb.jpg" alt="Rätseln und Basteln"><figcaption>Rätseln &amp; Basteln</figcaption></figure>
-        <figure><img src="images/illustration/illustration5_schwarzweiss_thumb.jpg" alt="Schwarz-Weiß"><figcaption>Schwarz-Weiß</figcaption></figure>
-      </div>
-      <p class="price-note">Gerne setze ich auch Ihre eigene Bild- oder Buchidee um – von der ersten Skizze bis zur fertigen Illustration. Anfragen nehme ich jederzeit über das Kontaktformular entgegen.</p>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- Karten & Kalender                                             -->
+    <!-- Illustrationen, Karten & Kalender                             -->
     <!-- ============================================================ -->
     <section id="karten">
       <div class="section-head">
-        <h2>Karten &amp; Kalender</h2>
+        <h2>Illustrationen, Karten &amp; Kalender</h2>
         <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben.</span>
       </div>
       <div class="gallery">
@@ -321,7 +311,7 @@
         <figure><img src="images/cards/cards2_anderetexte_thumb.jpg" alt="Andere Texte"><figcaption>Andere Texte</figcaption></figure>
       </div>
       <p class="price-note">Durch eine große Farbpalette, viele Muster und teilweise schwungvolle Bewegungen der Figuren versuche ich, Leichtigkeit auszudrücken. Mein Anliegen ist es, dem Betrachter ein kleines Lächeln zu entlocken und ihn für einen Moment in eine hoffnungsvolle Welt zu entführen.</p>
-      <p class="price-note">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: info@babette-klingenberg.de · Tel.: 089 / 78 65 80</p>
+      <p class="price-note">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: babetteklingenberg@web.de · Tel.: 0160 / 5602862</p>
     </section>
 
     <!-- ============================================================ -->
@@ -401,8 +391,8 @@
         <div>
           <span class="kicker">Anfrage</span>
           <h2>Kontakt</h2>
-          <p>Babette Klingenberg<br>Oppenriederstraße 47<br>81477 München</p>
-          <p>Tel: 089 / 78 65 80<br>E-Mail: info@babette-klingenberg.de</p>
+          <p>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
+          <p>Tel: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
         </div>
         <form>
           <div class="field">
@@ -429,8 +419,8 @@
       <div class="section-head" style="margin-bottom:20px;">
         <h2 style="font-size:1.4rem;">Impressum</h2>
       </div>
-      <p class="price-note">Angaben gemäß § 5 TMG<br>Babette Klingenberg<br>Oppenriederstraße 47<br>81477 München</p>
-      <p class="price-note">Telefon: 089 / 78 65 80<br>E-Mail: info@babette-klingenberg.de</p>
+      <p class="price-note">Angaben gemäß § 5 TMG<br>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
+      <p class="price-note">Telefon: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
       <p class="price-note">Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV: Babette Klingenberg (Anschrift wie oben)</p>
     </section>
 
@@ -454,6 +444,19 @@
     <h3 id="lightboxTitle"></h3>
     <p class="lightbox-count" id="lightboxCount"></p>
     <div class="lightbox-grid" id="lightboxGrid"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Bildvorschau mit Wasserzeichen                                -->
+<!-- ============================================================ -->
+<div class="preview" id="preview" aria-hidden="true">
+  <div class="preview-frame">
+    <button class="preview-close" id="previewClose" type="button" aria-label="Vorschau schließen">×</button>
+    <img id="previewImg" src="" alt="">
+    <div class="preview-watermark" aria-hidden="true">
+      <span>Malerei von Babette Klingenberg</span>
+    </div>
   </div>
 </div>
 
@@ -550,11 +553,15 @@
   const lightboxCount = document.getElementById('lightboxCount');
   const lightboxClose = document.getElementById('lightboxClose');
 
+  const preview = document.getElementById('preview');
+  const previewImg = document.getElementById('previewImg');
+  const previewClose = document.getElementById('previewClose');
+
   function openLightbox(cat) {
     const data = GALLERY_DATA[cat];
     if (!data) return;
     lightboxTitle.textContent = data.title;
-    lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Werk' : ' Werke');
+    lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Werk' : ' Werke') + ' – zum Vergrößern anklicken';
     lightboxGrid.innerHTML = data.images
       .map(src => '<img src="' + src + '" alt="' + data.title + '" loading="lazy">')
       .join('');
@@ -567,16 +574,41 @@
     lightbox.setAttribute('aria-hidden', 'true');
   }
 
+  function openPreview(src, alt) {
+    previewImg.src = src;
+    previewImg.alt = alt;
+    preview.classList.add('open');
+    preview.setAttribute('aria-hidden', 'false');
+  }
+
+  function closePreview() {
+    preview.classList.remove('open');
+    preview.setAttribute('aria-hidden', 'true');
+    previewImg.src = '';
+  }
+
   document.querySelectorAll('#malerei .gallery figure[data-cat]').forEach(fig => {
     fig.addEventListener('click', () => openLightbox(fig.dataset.cat));
+  });
+
+  lightboxGrid.addEventListener('click', function (e) {
+    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt);
   });
 
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', function (e) {
     if (e.target === lightbox) closeLightbox();
   });
+
+  previewClose.addEventListener('click', closePreview);
+  preview.addEventListener('click', function (e) {
+    if (e.target === preview) closePreview();
+  });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeLightbox();
+    if (e.key !== 'Escape') return;
+    if (preview.classList.contains('open')) closePreview();
+    else if (lightbox.classList.contains('open')) closeLightbox();
   });
 })();
 </script>
