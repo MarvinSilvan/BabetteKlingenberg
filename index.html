@@ -65,8 +65,10 @@
   /* ---------- Vita ---------- */
   .vita-flex{display:flex;gap:56px;align-items:flex-start;}
   .vita-flex img{width:220px;border-radius:4px;}
-  .vita-list{list-style:none;margin:0;padding:0;flex:1;}
-  .vita-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line);}
+  .vita-list{list-style:none;margin:0;padding:0 0 0 22px;flex:1;position:relative;}
+  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line);}
+  .vita-list li{position:relative;padding:12px 0;border-bottom:1px dashed var(--line);}
+  .vita-list li::before{content:"";position:absolute;left:-22px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--terracotta);}
   .year{color:var(--terracotta);font-weight:600;}
 
   /* ---------- Bildergalerien (Malerei / Illustration / Karten) ---------- */
@@ -178,12 +180,13 @@
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#vita">Vita</a></li>
           <li><a href="#arbeit">Meine Arbeit</a></li>
+          <li><a href="#vita">Vita</a></li>
           <li><a href="#malerei">Malerei</a></li>
           <li><a href="#karten">Illustrationen</a></li>
           <li><a href="#ausstellungen">Ausstellungen</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#impressum">Impressum</a></li>
         </ul>
       </nav>
     </div>
@@ -234,7 +237,6 @@
         </div>
         <div>
           <p class="highlight">„Inspiriert werde ich von der Beobachtung meiner Umwelt, von Landschaften, Reisen, Stimmungen in den verschiedenen Jahreszeiten.“</p>
-          <p>Bevor ich mit dem Malen beginne, strukturiere ich die Leinwand mit verschiedenen Materialien wie Sand, Servietten oder Folien. So entstehen Bilder mit ganz unterschiedlichen Anmutungen und Oberflächen – jedes Werk erhält seine eigene Tiefe und Haptik.</p>
         </div>
       </div>
     </section>
@@ -250,15 +252,15 @@
       <div class="vita-flex">
         <img src="images/portrait.jpg" alt="Portrait Babette Klingenberg">
         <ul class="vita-list">
-          <li><span class="year">1961</span><span>Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li>
-          <li><span class="year">1982</span><span>Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li>
-          <li><span class="year">1983</span><span>Studium der Malerei an der Akademie Roederer, Paris</span></li>
-          <li><span class="year">1987</span><span>Diplom für Kommunikationsdesign an der FH Augsburg</span></li>
-          <li><span class="year">1988–1992</span><span>Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li>
-          <li><span class="year">seit 2003</span><span>Regelmäßige Einzel- und Gruppenausstellungen</span></li>
-          <li><span class="year">seit 2004</span><span>Kurse für Acrylmalerei an unterschiedlichen VHS Institutionen und im ASZ München Solln</span></li>
-          <li><span class="year">seit 2008</span><span>Mitglied im Künstlerkreis Neuried</span></li>
-          <li><span class="year">seit 2017</span><span>Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990)</span></li>
+          <li><span>Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li>
+          <li><span>Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li>
+          <li><span>Studium der Malerei an der Akademie Roederer, Paris</span></li>
+          <li><span>Diplom für Kommunikationsdesign an der FH Augsburg</span></li>
+          <li><span>Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li>
+          <li><span>Regelmäßige Einzel- und Gruppenausstellungen</span></li>
+          <li><span>Kurse für Acrylmalerei an unterschiedlichen VHS Institutionen und im ASZ München Solln</span></li>
+          <li><span>Mitglied im Künstlerkreis Neuried</span></li>
+          <li><span>Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990)</span></li>
         </ul>
       </div>
     </section>
@@ -269,17 +271,16 @@
     <section id="malerei">
       <div class="section-head">
         <h2>Malerei</h2>
-        <span class="lede-side">Ob dekorativ, figürlich oder konkret – ich male je nach Stimmung in verschiedenen Genres. Klicken Sie auf eine Kategorie für weitere Werke.</span>
+        <span class="lede-side">Bitte klicken Sie auf eine Kategorie für weitere Werke.</span>
       </div>
       <div class="gallery">
         <figure data-cat="figuerlich" data-group="malerei"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich"><figcaption>Figürlich</figcaption></figure>
         <figure data-cat="abstrakt" data-group="malerei"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
         <figure data-cat="landschaft" data-group="malerei"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
-        <figure data-cat="tierisch" data-group="malerei"><img src="images/painting/gallery/tierisch/tierisch-1.jpg" alt="Tierisch"><figcaption>Tierisch</figcaption></figure>
+        <figure data-cat="tierwelt" data-group="malerei"><img src="images/painting/gallery/tierwelt/tierwelt-1.jpg" alt="Tierwelt"><figcaption>Tierwelt</figcaption></figure>
         <figure data-cat="kubistisch" data-group="malerei"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch"><figcaption>Kubistisch</figcaption></figure>
         <figure data-cat="pflanzlich" data-group="malerei"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
       </div>
-      <p class="price-note">Falls Ihnen eines der Bilder gefällt, fertige ich es gerne nach Maß oder in gewünschten Farben an. Auf Wunsch berate ich Sie mit einer Bildauswahl vor Ort.</p>
     </section>
 
     <!-- ============================================================ -->
@@ -472,12 +473,7 @@
       'images/painting/gallery/figuerlich/figuerlich-2.jpg',
       'images/painting/gallery/figuerlich/figuerlich-3.jpg',
       'images/painting/gallery/figuerlich/figuerlich-4.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-5.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-6.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-7.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-8.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-9.jpg',
-      'images/painting/gallery/figuerlich/figuerlich-10.jpg'
+      'images/painting/gallery/figuerlich/figuerlich-5.jpg'
     ]},
     abstrakt: { title: 'Abstrakt', images: [
       'images/painting/gallery/abstrakt/abstrakt-1.jpg'
@@ -488,31 +484,15 @@
       'images/painting/gallery/landschaft/landschaft-3.jpg',
       'images/painting/gallery/landschaft/landschaft-4.jpg',
       'images/painting/gallery/landschaft/landschaft-5.jpg',
-      'images/painting/gallery/landschaft/landschaft-6.jpg',
-      'images/painting/gallery/landschaft/landschaft-7.jpg',
-      'images/painting/gallery/landschaft/landschaft-8.jpg',
-      'images/painting/gallery/landschaft/landschaft-9.jpg',
-      'images/painting/gallery/landschaft/landschaft-10.jpg',
-      'images/painting/gallery/landschaft/landschaft-11.jpg',
-      'images/painting/gallery/landschaft/landschaft-12.jpg',
-      'images/painting/gallery/landschaft/landschaft-13.jpg',
-      'images/painting/gallery/landschaft/landschaft-14.jpg',
-      'images/painting/gallery/landschaft/landschaft-15.jpg',
-      'images/painting/gallery/landschaft/landschaft-16.jpg',
-      'images/painting/gallery/landschaft/landschaft-17.jpg'
+      'images/painting/gallery/landschaft/landschaft-6.jpg'
     ]},
-    tierisch: { title: 'Tierisch', images: [
-      'images/painting/gallery/tierisch/tierisch-1.jpg',
-      'images/painting/gallery/tierisch/tierisch-2.jpg',
-      'images/painting/gallery/tierisch/tierisch-3.jpg',
-      'images/painting/gallery/tierisch/tierisch-4.jpg',
-      'images/painting/gallery/tierisch/tierisch-5.jpg',
-      'images/painting/gallery/tierisch/tierisch-6.jpg',
-      'images/painting/gallery/tierisch/tierisch-7.jpg',
-      'images/painting/gallery/tierisch/tierisch-8.jpg',
-      'images/painting/gallery/tierisch/tierisch-9.jpg',
-      'images/painting/gallery/tierisch/tierisch-10.jpg',
-      'images/painting/gallery/tierisch/tierisch-11.jpg'
+    tierwelt: { title: 'Tierwelt', images: [
+      'images/painting/gallery/tierwelt/tierwelt-1.jpg',
+      'images/painting/gallery/tierwelt/tierwelt-2.jpg',
+      'images/painting/gallery/tierwelt/tierwelt-3.jpg',
+      'images/painting/gallery/tierwelt/tierwelt-4.jpg',
+      'images/painting/gallery/tierwelt/tierwelt-5.jpg',
+      'images/painting/gallery/tierwelt/tierwelt-6.jpg'
     ]},
     kubistisch: { title: 'Kubistisch', images: [
       'images/painting/gallery/kubistisch/kubistisch-1.jpg',
@@ -521,11 +501,7 @@
       'images/painting/gallery/kubistisch/kubistisch-4.jpg',
       'images/painting/gallery/kubistisch/kubistisch-5.jpg',
       'images/painting/gallery/kubistisch/kubistisch-6.jpg',
-      'images/painting/gallery/kubistisch/kubistisch-7.jpg',
-      'images/painting/gallery/kubistisch/kubistisch-8.jpg',
-      'images/painting/gallery/kubistisch/kubistisch-9.jpg',
-      'images/painting/gallery/kubistisch/kubistisch-10.jpg',
-      'images/painting/gallery/kubistisch/kubistisch-11.jpg'
+      'images/painting/gallery/kubistisch/kubistisch-7.jpg'
     ]},
     pflanzlich: { title: 'Pflanzlich', images: [
       'images/painting/gallery/pflanzlich/pflanzlich-1.jpg',
