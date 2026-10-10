@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Babette Klingenberg – Malerei, Illustration und Grafik aus München. Individuelle Bilder, Kinderillustrationen, Karten und Kalender aus dem eigenen Atelier.">
 <title>Babette Klingenberg – Atelier für Malerei &amp; Illustration</title>
+<link rel="icon" href="images/logo.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Babette Klingenberg – Atelier für Malerei &amp; Illustration">
+<meta property="og:description" content="Malerei, Illustration und Grafik aus München. Individuelle Bilder, Kinderillustrationen, Karten und Kalender aus dem eigenen Atelier.">
+<meta property="og:image" content="images/hero_atelier.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,16 +22,21 @@
     --sand:#f3e9dc;
     --paper:#fbf4ea;
     --ink:#3a2f27;
-    --muted:#7a6b5d;
+    --muted:#6e5f51;
     --line:#e4d2ba;
     --olive:#6b6a45;
     --gold:#b8954f;
+    --vita-1:#9e783c;
+    --vita-2:#7f4e33;
+    --vita-3:#642425;
+    --content-max:1500px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;font-family:'Work Sans',sans-serif;background:var(--sand);color:var(--ink);line-height:1.7;}
   h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;margin:0 0 .4em;}
   a{color:inherit;}
+  :focus-visible{outline:3px solid var(--terracotta-dark);outline-offset:3px;}
 
   /* ---------- Sidebar / Hauptmenü ---------- */
   .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
@@ -35,20 +45,31 @@
   .brand img{width:56px;filter:brightness(0) invert(1);opacity:.9;}
   .brand span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2;}
   .side nav ul{list-style:none;padding:0;margin:36px 0 0;display:flex;flex-direction:column;gap:16px;}
-  .side nav a{color:#f6e3d6;text-decoration:none;font-size:.92rem;}
+  .side nav a{color:#f6e3d6;text-decoration:none;font-size:.92rem;position:relative;padding-left:14px;transition:color .15s;}
+  .side nav a::before{content:"";position:absolute;left:0;top:.35em;width:6px;height:6px;border-radius:50%;background:transparent;transition:background .15s;}
+  .side nav a.active{color:#fff;font-weight:600;}
+  .side nav a.active::before{background:#fff;}
   .side .foot{font-size:.78rem;color:#f0d4bf;}
   .menu-toggle{display:none;}
 
   /* ---------- Hero / Startbereich ---------- */
   main{background:var(--paper);}
   section{padding:70px 64px;border-bottom:1px solid var(--line);}
+  section:not(.hero){max-width:var(--content-max);margin-left:auto;margin-right:auto;}
   .hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0;}
   .hero-text{padding:80px 64px;}
   .hero h1{font-size:clamp(2.4rem,4vw,3.4rem);max-width:520px;}
   .hero p,.lede-side,.price-note{color:var(--muted);max-width:640px;}
   #karten .price-note{max-width:none;}
+  .price-note a{color:var(--terracotta-dark);text-decoration:underline;}
   .hero-img{height:100%;min-height:520px;}
   .hero-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;}
+  .btn{display:inline-block;padding:13px 26px;border-radius:6px;font-size:.92rem;font-weight:600;text-decoration:none;cursor:pointer;border:2px solid transparent;}
+  .btn-primary{background:var(--terracotta);color:#fff;}
+  .btn-primary:hover{background:var(--terracotta-dark);}
+  .btn-outline{border-color:var(--terracotta);color:var(--terracotta-dark);}
+  .btn-outline:hover{background:var(--terracotta);color:#fff;}
 
   /* ---------- Abschnitts-Überschriften (überall wiederverwendet) ---------- */
   .kicker{color:var(--terracotta);text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:600;}
@@ -68,11 +89,11 @@
   .vita-flex{display:flex;gap:56px;align-items:flex-start;}
   .vita-flex img{width:220px;border-radius:4px;}
   .vita-list{list-style:none;margin:0;padding:0 0 0 22px;flex:1;position:relative;}
-  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,#9e783c,#7f4e33,#642425);opacity:.35;}
+  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--vita-1),var(--vita-2),var(--vita-3));opacity:.35;}
   .vita-list li{position:relative;padding:12px 0;border-bottom:1px dashed var(--line);}
-  .vita-list li::before{content:"";position:absolute;left:-23px;top:19px;width:9px;height:9px;border-radius:50%;background:#9e783c;box-shadow:0 0 0 2px var(--paper);}
-  .vita-list li:nth-child(3n+2)::before{background:#7f4e33;}
-  .vita-list li:nth-child(3n)::before{background:#642425;}
+  .vita-list li::before{content:"";position:absolute;left:-23px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--vita-1);box-shadow:0 0 0 2px var(--paper);}
+  .vita-list li:nth-child(3n+2)::before{background:var(--vita-2);}
+  .vita-list li:nth-child(3n)::before{background:var(--vita-3);}
   .year{color:var(--terracotta);font-weight:600;}
 
   /* ---------- Bildergalerien (Malerei / Illustration / Karten) ---------- */
@@ -81,8 +102,10 @@
   .gallery figure:nth-child(1){grid-column:span 3;grid-row:span 3;}
   .gallery figure:nth-child(2),.gallery figure:nth-child(3){grid-column:span 3;grid-row:span 2;}
   .gallery figure:nth-child(n+4){grid-column:span 2;grid-row:span 2;}
+  #karten .gallery figure:nth-child(7){grid-column:span 6;}
   .gallery img{width:100%;height:100%;object-fit:cover;}
   .gallery figcaption{position:absolute;left:10px;bottom:10px;background:rgba(58,47,39,.82);color:#fbf0e2;padding:5px 10px;border-radius:20px;}
+  .placeholder-badge{position:absolute;top:10px;right:10px;background:rgba(58,47,39,.75);color:#fbf0e2;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
 
   /* ---------- Malerei-Kategorien sind anklickbar (öffnen Lightbox) ---------- */
   #malerei .gallery figure,#karten .gallery figure{cursor:pointer;}
@@ -90,7 +113,7 @@
   #malerei .gallery figure::after{content:"+ mehr ansehen";}
   #karten .gallery figure::after{content:"ansehen";}
   #malerei .gallery figure:hover::after,#karten .gallery figure:hover::after{background:rgba(58,47,39,.45);color:#fff;}
-  .gallery-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--terracotta),var(--olive));}
+  .gallery-placeholder{position:relative;width:100%;height:100%;background:linear-gradient(135deg,var(--terracotta),var(--olive));}
 
   /* ---------- Ausstellungen ---------- */
   .membership-note{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:25px;color:var(--muted);}
@@ -229,6 +252,10 @@
         <p>Willkommen in meiner Welt aus Farbe, Struktur und Licht.</p>
         <p>Seit über 35 Jahren übersetze ich Natur, Reisen und Stimmungen in Bilder – von großformatigen Unikaten bis zu liebevollen Illustrationen für Kinder und Erwachsene. Heute bin ich aktiv als Mitglied der Künstlerpalette Unterschleißheim und im Künstlerkreis Neuried. Als Dozentin für Acrylmalerei unterrichte ich Erwachsene an diversen Institutionen im Raum München.</p>
         <p>Meine Malerei bewegt sich zwischen Abstraktion und Figuration. Mich faszinieren architektonische Formen, das Spiel von Licht und Schatten und die stille Begegnung von Menschen im Raum. Schicht für Schicht baue ich meine Bilder auf, bis eine Stimmung entsteht, die den Betrachter einlädt, innezuhalten.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#malerei">Malerei entdecken</a>
+          <a class="btn btn-outline" href="#karten">Illustrationen ansehen</a>
+        </div>
       </div>
       <div class="hero-img">
         <img src="images/hero_atelier.jpg" alt="Gemälde mit Zypressen und Sonnenlicht">
@@ -252,10 +279,8 @@
       </div>
       <div class="arbeit-row">
         <div>
-          <p>Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit Illustration und Malerei beschäftigt.</p>
-          <p>Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen.</p>
-          <p>Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion.</p>
-          <p>Später kamen andere Themen wie menschliche Figuren, Landschaften und kubistische Formen hinzu, bis hin zu pflanzlichen und tierischen Motiven.</p>
+          <p>Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit Illustration und Malerei beschäftigt. Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen.</p>
+          <p>Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion. Später kamen andere Themen wie menschliche Figuren, Landschaften und kubistische Formen hinzu, bis hin zu pflanzlichen und tierischen Motiven.</p>
           <p>Ein anderer Teil meiner derzeitigen Arbeit sind Illustrationen, die ich für verschiedene Druckerzeugnisse einsetze, wie Jahreskalender, Karten, Tassen, Adventskalender.…</p>
         </div>
         <div>
@@ -296,12 +321,12 @@
         <span class="lede-side">Bitte klicken Sie auf eine Kategorie für weitere Werke.</span>
       </div>
       <div class="gallery">
-        <figure data-cat="figuerlich" data-group="malerei"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich" style="object-position:50% 18%;"><figcaption>Figürlich</figcaption></figure>
-        <figure data-cat="abstrakt" data-group="malerei"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
-        <figure data-cat="landschaft" data-group="malerei"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
-        <figure data-cat="tierwelt" data-group="malerei"><img src="images/painting/gallery/tierwelt/tierwelt-1.jpg" alt="Tierwelt" style="object-position:50% 20%;"><figcaption>Tierwelt</figcaption></figure>
-        <figure data-cat="kubistisch" data-group="malerei"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch" style="object-position:50% 65%;"><figcaption>Kubistisch</figcaption></figure>
-        <figure data-cat="pflanzlich" data-group="malerei"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
+        <figure data-cat="figuerlich" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Figürlich öffnen"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich" style="object-position:50% 18%;"><figcaption>Figürlich</figcaption></figure>
+        <figure data-cat="abstrakt" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Abstrakt öffnen"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
+        <figure data-cat="landschaft" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Landschaft öffnen"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
+        <figure data-cat="tierwelt" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Tierwelt öffnen"><img src="images/painting/gallery/tierwelt/tierwelt-1.jpg" alt="Tierwelt" style="object-position:50% 20%;"><figcaption>Tierwelt</figcaption></figure>
+        <figure data-cat="kubistisch" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Kubistisch öffnen"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch" style="object-position:50% 65%;"><figcaption>Kubistisch</figcaption></figure>
+        <figure data-cat="pflanzlich" data-group="malerei" tabindex="0" role="button" aria-label="Kategorie Pflanzlich öffnen"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
       </div>
     </section>
 
@@ -314,16 +339,16 @@
         <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben.</span>
       </div>
       <div class="gallery">
-        <figure data-cat="weihnachtskarten" data-group="illu"><img src="images/illustration/gallery/weihnachtskarten/karte-04.jpg" alt="Weihnachtskarten" style="object-position:50% 15%;"><figcaption>Weihnachtskarten</figcaption></figure>
-        <figure data-cat="tischkalender" data-group="illu"><img src="images/illustration/gallery/tischkalender/cover.jpg" alt="Tischkalender mit Sprüchen"><figcaption>Tischkalender mit Sprüchen</figcaption></figure>
-        <figure data-cat="karten" data-group="illu"><img src="images/illustration/gallery/karten/produktfoto.jpg" alt="Karten"><figcaption>Karten</figcaption></figure>
-        <figure data-cat="jahreskalender" data-group="illu"><img src="images/illustration/gallery/jahreskalender/produktfoto.jpg" alt="Jahreskalender"><figcaption>Jahreskalender</figcaption></figure>
-        <figure data-cat="geburtstagskalender" data-group="illu"><img src="images/illustration/gallery/geburtstagskalender/cover.jpg" alt="Geburtstagskalender" style="object-position:50% 40%;"><figcaption>Geburtstagskalender</figcaption></figure>
-        <figure data-cat="adventskalender" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Adventskalender</figcaption></figure>
-        <figure data-cat="franzoesische-rezepte" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Französische Rezepte</figcaption></figure>
+        <figure data-cat="weihnachtskarten" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Weihnachtskarten öffnen"><img src="images/illustration/gallery/weihnachtskarten/karte-04.jpg" alt="Weihnachtskarten" style="object-position:50% 15%;"><figcaption>Weihnachtskarten</figcaption></figure>
+        <figure data-cat="tischkalender" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Tischkalender mit Sprüchen öffnen"><img src="images/illustration/gallery/tischkalender/cover.jpg" alt="Tischkalender mit Sprüchen"><figcaption>Tischkalender mit Sprüchen</figcaption></figure>
+        <figure data-cat="karten" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Karten öffnen"><img src="images/illustration/gallery/karten/produktfoto.jpg" alt="Karten"><figcaption>Karten</figcaption></figure>
+        <figure data-cat="jahreskalender" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Jahreskalender öffnen"><img src="images/illustration/gallery/jahreskalender/produktfoto.jpg" alt="Jahreskalender"><figcaption>Jahreskalender</figcaption></figure>
+        <figure data-cat="geburtstagskalender" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Geburtstagskalender öffnen"><img src="images/illustration/gallery/geburtstagskalender/cover.jpg" alt="Geburtstagskalender" style="object-position:50% 40%;"><figcaption>Geburtstagskalender</figcaption></figure>
+        <figure data-cat="adventskalender" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Adventskalender öffnen"><div class="gallery-placeholder"><span class="placeholder-badge">In Vorbereitung</span></div><figcaption>Adventskalender</figcaption></figure>
+        <figure data-cat="franzoesische-rezepte" data-group="illu" tabindex="0" role="button" aria-label="Kategorie Französische Rezepte öffnen"><div class="gallery-placeholder"><span class="placeholder-badge">In Vorbereitung</span></div><figcaption>Französische Rezepte</figcaption></figure>
       </div>
       <p class="price-note">Durch eine große Farbpalette, viele Muster und teilweise schwungvolle Bewegungen der Figuren versuche ich, Leichtigkeit auszudrücken. Mein Anliegen ist es, dem Betrachter ein kleines Lächeln zu entlocken und ihn für einen Moment in eine hoffnungsvolle Welt zu entführen.</p>
-      <p class="price-note">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: babetteklingenberg@web.de · Tel.: 0160 / 5602862</p>
+      <p class="price-note">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: <a href="mailto:babetteklingenberg@web.de">babetteklingenberg@web.de</a> · Tel.: <a href="tel:+491605602862">0160 / 5602862</a></p>
     </section>
 
     <!-- ============================================================ -->
@@ -404,22 +429,23 @@
           <span class="kicker">Anfrage</span>
           <h2>Kontakt</h2>
           <p>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
-          <p>Tel: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
+          <p>Tel: <a href="tel:+491605602862">0160 / 5602862</a><br>E-Mail: <a href="mailto:babetteklingenberg@web.de">babetteklingenberg@web.de</a></p>
         </div>
-        <form>
+        <form id="contactForm">
           <div class="field">
             <label for="name2">Name</label>
-            <input id="name2" type="text" placeholder="Ihr Name">
+            <input id="name2" name="name" type="text" placeholder="Ihr Name" required>
           </div>
           <div class="field">
             <label for="email2">E-Mail</label>
-            <input id="email2" type="email" placeholder="ihre@email.de">
+            <input id="email2" name="email" type="email" placeholder="ihre@email.de" required>
           </div>
           <div class="field">
             <label for="nachricht2">Nachricht</label>
-            <textarea id="nachricht2" rows="4" placeholder="Ihre Nachricht"></textarea>
+            <textarea id="nachricht2" name="nachricht" rows="4" placeholder="Ihre Nachricht" required></textarea>
           </div>
-          <button type="button">Senden</button>
+          <button type="submit">Senden</button>
+          <p id="contactFormNote" style="font-size:.8rem;margin:10px 0 0;color:#f6e3d6;" hidden>Ihr E-Mail-Programm öffnet sich mit der vorausgefüllten Nachricht – bitte dort abschließend senden.</p>
         </form>
       </div>
     </section>
@@ -432,7 +458,7 @@
         <h2 style="font-size:1.4rem;">Impressum</h2>
       </div>
       <p class="price-note">Angaben gemäß § 5 TMG<br>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
-      <p class="price-note">Telefon: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
+      <p class="price-note">Telefon: <a href="tel:+491605602862">0160 / 5602862</a><br>E-Mail: <a href="mailto:babetteklingenberg@web.de">babetteklingenberg@web.de</a></p>
       <p class="price-note">Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV: Babette Klingenberg (Anschrift wie oben)</p>
     </section>
 
@@ -450,7 +476,7 @@
 <!-- ============================================================ -->
 <!-- Lightbox: zeigt Details/Werke einer Kategorie (Malerei oder Illustrationen) -->
 <!-- ============================================================ -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Schließen">×</button>
     <h3 id="lightboxTitle"></h3>
@@ -462,7 +488,7 @@
 <!-- ============================================================ -->
 <!-- Bildvorschau mit Wasserzeichen                                -->
 <!-- ============================================================ -->
-<div class="preview" id="preview" aria-hidden="true">
+<div class="preview" id="preview" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Bildvorschau">
   <div class="preview-frame">
     <button class="preview-close" id="previewClose" type="button" aria-label="Vorschau schließen">×</button>
     <div class="preview-media" id="previewMedia">
@@ -487,9 +513,45 @@
 
   toggle.addEventListener('click', () => side.classList.toggle('nav-open'));
 
-  document.querySelectorAll('.side nav a').forEach(a =>
+  const navLinks = Array.from(document.querySelectorAll('.side nav a'));
+  navLinks.forEach(a =>
     a.addEventListener('click', () => side.classList.remove('nav-open'))
   );
+
+  // Aktiver Menüpunkt: markiert den Abschnitt, der gerade im Blickfeld ist.
+  const navMap = new Map(navLinks.map(a => [a.getAttribute('href').slice(1), a]));
+  const spySections = Array.from(document.querySelectorAll('main section[id]'));
+  if ('IntersectionObserver' in window && spySections.length) {
+    const spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const link = navMap.get(entry.target.id);
+        if (!link) return;
+        navLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    spySections.forEach(s => spy.observe(s));
+  }
+
+  // Kontaktformular: keine eigene Server-Anbindung (statische Seite) - "Senden"
+  // oeffnet das E-Mail-Programm des Besuchers mit vorausgefuellter Nachricht.
+  const contactForm = document.getElementById('contactForm');
+  const contactFormNote = document.getElementById('contactFormNote');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = contactForm.elements['name'].value.trim();
+      const email = contactForm.elements['email'].value.trim();
+      const message = contactForm.elements['nachricht'].value.trim();
+      const subject = 'Anfrage über die Website von ' + (name || 'Interessent/in');
+      const body = message + '\n\n— Absender: ' + name + (email ? ' (' + email + ')' : '');
+      window.location.href = 'mailto:babetteklingenberg@web.de'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+      if (contactFormNote) contactFormNote.hidden = false;
+    });
+  }
 })();
 </script>
 
@@ -622,11 +684,15 @@
   const WATERMARK_TILES = 12;
 
   let currentWatermark = WATERMARKS.malerei;
+  // Merkt sich pro geoeffnetem Dialog, welches Element davor fokussiert war,
+  // damit beim Schliessen der Fokus (Tastatur) wieder dorthin zurueckspringt.
+  const focusStack = [];
 
   // Malerei: Kategorie-Kachel oeffnet die Lightbox mit allen Werken dieser Kategorie.
-  function openLightbox(cat) {
+  function openLightbox(cat, trigger) {
     const data = GALLERY_DATA[cat];
     if (!data) return;
+    focusStack.push(trigger || document.activeElement);
     currentWatermark = WATERMARKS.malerei;
     lightboxTitle.textContent = data.title;
     const total = data.images.length;
@@ -634,31 +700,35 @@
     lightboxGrid.innerHTML = data.images.map(function (img, i) {
       return '<div class="wall-piece">'
         + '<div class="wall-frame"><div class="wall-mat">'
-        + '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy">'
+        + '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy" tabindex="0" role="button" aria-label="Werk ' + String(i + 1).padStart(2, '0') + ' vergrößern">'
         + '</div></div>'
         + '<div class="wall-plaque"><span class="n">Werk ' + String(i + 1).padStart(2, '0') + ' von ' + String(total).padStart(2, '0') + '</span></div>'
         + '</div>';
     }).join('');
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
+    lightboxClose.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
+    const prev = focusStack.pop();
+    if (prev && typeof prev.focus === 'function') prev.focus();
   }
 
   // Illustrationen: Kategorie-Kachel springt direkt in die Grossansicht,
   // der Beschreibungstext steht dort als Bildunterschrift.
-  function openIlluPreview(cat) {
+  function openIlluPreview(cat, trigger) {
     const data = ILLU_DATA[cat];
     if (!data) return;
     currentWatermark = WATERMARKS.illu;
     const img = data.images[0];
-    openPreview(img ? img.src : null, data.title, data);
+    openPreview(img ? img.src : null, data.title, data, trigger);
   }
 
-  function openPreview(src, alt, caption) {
+  function openPreview(src, alt, caption, trigger) {
+    focusStack.push(trigger || document.activeElement);
     if (src) {
       previewMedia.classList.remove('no-image');
       previewImg.style.display = '';
@@ -680,23 +750,40 @@
     }
     preview.classList.add('open');
     preview.setAttribute('aria-hidden', 'false');
+    previewClose.focus();
   }
 
   function closePreview() {
     preview.classList.remove('open');
     preview.setAttribute('aria-hidden', 'true');
     previewImg.src = '';
+    const prev = focusStack.pop();
+    if (prev && typeof prev.focus === 'function') prev.focus();
   }
 
   document.querySelectorAll('.gallery figure[data-cat]').forEach(fig => {
-    fig.addEventListener('click', () => {
-      if (fig.dataset.group === 'illu') openIlluPreview(fig.dataset.cat);
-      else openLightbox(fig.dataset.cat);
+    function trigger() {
+      if (fig.dataset.group === 'illu') openIlluPreview(fig.dataset.cat, fig);
+      else openLightbox(fig.dataset.cat, fig);
+    }
+    fig.addEventListener('click', trigger);
+    fig.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger();
+      }
     });
   });
 
   lightboxGrid.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt, null);
+    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt, null, e.target);
+  });
+  lightboxGrid.addEventListener('keydown', function (e) {
+    if (e.target.tagName !== 'IMG') return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openPreview(e.target.src, e.target.alt, null, e.target);
+    }
   });
 
   lightboxClose.addEventListener('click', closeLightbox);
