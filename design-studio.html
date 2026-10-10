@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Babette Klingenberg – Malerei, Illustration und Grafik aus München. Individuelle Bilder, Kinderillustrationen, Karten und Kalender aus dem eigenen Atelier.">
+<title>Babette Klingenberg – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ---------- Grundlagen ---------- */
+  :root{
+    --ink:#161412;
+    --paper:#f6f3ee;
+    --panel:#ffffff;
+    --muted:#6f6a63;
+    --line:#e3ded3;
+    --accent:#9a7b4f;
+    --accent-dark:#7a5f3b;
+    --clay:#b8572f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0 0 .4em;letter-spacing:-.01em;}
+  a{color:inherit;}
+  img{display:block;}
+
+  /* ---------- Topbar ---------- */
+  .topbar{position:sticky;top:0;z-index:200;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 56px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{width:34px;}
+  .brand span{font-family:'Fraunces',serif;font-size:1.15rem;letter-spacing:.01em;}
+  .topbar nav ul{list-style:none;margin:0;padding:0;display:flex;gap:30px;}
+  .topbar nav a{text-decoration:none;font-size:.86rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);opacity:.75;transition:.15s;}
+  .topbar nav a:hover{opacity:1;color:var(--clay);}
+  .menu-toggle{display:none;background:transparent;border:1px solid var(--ink);color:var(--ink);padding:8px 10px;border-radius:4px;}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.92);}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,20,18,0) 35%,rgba(22,20,18,.82) 100%);}
+  .hero-inner{position:relative;z-index:1;padding:0 56px 64px;color:#fdfaf4;max-width:980px;}
+  .hero .kicker{color:#e9d9bf;}
+  .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);color:#fdfaf4;max-width:820px;}
+  .hero p{color:#e8e1d3;max-width:620px;font-size:1.02rem;}
+
+  /* ---------- Sections ---------- */
+  main{background:var(--paper);}
+  section{padding:88px 56px;border-bottom:1px solid var(--line);}
+  .kicker{color:var(--clay);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:600;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px;}
+  .section-head h2{font-size:2.3rem;}
+  .lede-side{color:var(--muted);max-width:420px;font-size:.92rem;}
+
+  /* ---------- Intro-Statement ---------- */
+  .statement{background:var(--ink);color:#f3ece0;padding:80px 56px;text-align:center;}
+  .statement blockquote{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(1.5rem,3vw,2.3rem);max-width:820px;margin:0 auto 16px;}
+  .statement cite{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#cdbf9c;}
+
+  /* ---------- Meine Arbeit ---------- */
+  .arbeit-row{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;}
+  .arbeit-row .highlight{background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:30px 32px;font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.5;color:var(--accent-dark);}
+
+  /* ---------- Vita ---------- */
+  .vita-flex{display:flex;gap:64px;align-items:flex-start;}
+  .vita-flex img{width:220px;filter:grayscale(.1);}
+  .vita-list{list-style:none;margin:0;padding:0;flex:1;}
+  .vita-list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:18px;}
+  .vita-list li span:first-child{display:none;}
+
+  /* ---------- Portfolio-Grid (anders als Sidebar-Version: gleichmäßiges Raster mit Hover-Overlay) ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);}
+  .gallery figure{margin:0;position:relative;overflow:hidden;aspect-ratio:1/1;cursor:pointer;background:var(--panel);}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.06);}
+  .gallery figcaption{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;background:linear-gradient(180deg,transparent 45%,rgba(22,20,18,.78) 100%);color:#fdfaf4;font-family:'Fraunces',serif;font-size:1.05rem;opacity:0;transition:opacity .25s;}
+  .gallery figure:hover figcaption{opacity:1;}
+  .gallery-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--accent),var(--clay));}
+
+  /* ---------- Ausstellungen ---------- */
+  .membership-note{background:var(--panel);border:1px solid var(--line);padding:22px 26px;margin-bottom:28px;color:var(--muted);}
+  .exhib-columns{columns:2;column-gap:64px;}
+  .exhib-columns .item{break-inside:avoid;display:flex;gap:18px;padding:13px 0;border-bottom:1px solid var(--line);}
+  .exhib-columns .year{width:48px;flex:none;color:var(--clay);font-weight:600;}
+  .src{display:block;font-size:.78rem;color:var(--muted);}
+
+  /* ---------- Kontakt ---------- */
+  .contact-panel{background:var(--ink);color:#f3ece0;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  .contact-panel h2{color:#fdfaf4;}
+  .contact-panel .kicker{color:#cdbf9c;}
+  .contact-panel p{color:#d9d0bf;}
+  .contact-panel a{font-weight:600;text-decoration:underline;}
+  form .field{margin-bottom:16px;}
+  form label{display:block;font-size:.8rem;color:#cdbf9c;margin-bottom:6px;}
+  form input,form textarea{width:100%;padding:11px 14px;border:1px solid rgba(255,255,255,.3);border-radius:2px;font-family:inherit;font-size:.95rem;background:rgba(255,255,255,.06);color:#fdfaf4;}
+  form button{background:var(--clay);color:#fdfaf4;border:0;padding:12px 30px;border-radius:2px;font-size:.92rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;}
+  form button:hover{background:var(--accent-dark);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--paper);color:var(--muted);padding:28px 56px;font-size:.82rem;display:flex;justify-content:space-between;gap:12px;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(10,9,8,.94);z-index:500;padding:40px 20px;overflow-y:auto;}
+  .lightbox.open{display:block;}
+  .lightbox-inner{max-width:1200px;margin:0 auto;background:#15130f;border-radius:4px;padding:40px 36px;position:relative;}
+  .lightbox-close{position:absolute;top:16px;right:16px;background:var(--clay);color:#fff;border:0;width:36px;height:36px;border-radius:2px;font-size:1.3rem;line-height:1;cursor:pointer;z-index:2;}
+  .lightbox-close:hover{background:var(--accent-dark);}
+  .lightbox-inner h3{margin-top:0;font-size:1.9rem;color:#f3ece1;text-align:center;}
+  .lightbox-count{color:#a79d8d;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;text-align:center;}
+  .lightbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:36px 24px;margin-top:34px;}
+  .wall-piece{position:relative;text-align:center;}
+  .wall-frame{position:relative;background:#0f0d0c;padding:8px;}
+  .wall-mat{background:#ece4d3;padding:10px;}
+  .lightbox-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--paper);cursor:zoom-in;}
+  .wall-plaque{margin-top:12px;}
+  .wall-plaque .n{display:block;color:var(--accent);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;}
+
+  /* ---------- Bildvorschau ---------- */
+  .preview{display:none;position:fixed;inset:0;background:rgba(10,8,6,.94);z-index:600;align-items:center;justify-content:center;padding:40px 20px;}
+  .preview.open{display:flex;}
+  .preview-frame{position:relative;max-width:min(1100px,92vw);max-height:92vh;overflow-y:auto;overflow-x:hidden;}
+  .preview-media{position:relative;display:inline-block;max-width:100%;overflow:hidden;border-radius:2px;}
+  .preview-media img{display:block;max-width:100%;max-height:72vh;margin:0 auto;border-radius:2px;object-fit:contain;}
+  .preview-frame:has(.preview-caption.show) .preview-media img{max-height:54vh;}
+  .preview-media.no-image{min-height:240px;width:100%;background:linear-gradient(135deg,var(--accent),var(--clay));display:flex;align-items:center;justify-content:center;}
+  .preview-media.no-image::after{content:"Noch kein Beispielbild hinterlegt";color:#fff;font-size:.95rem;opacity:.9;padding:0 20px;text-align:center;}
+  .preview-media.no-image img{display:none;}
+  .preview-watermark{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;pointer-events:none;overflow:hidden;}
+  .preview-watermark span{color:rgba(255,255,255,.34);font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.1rem,3vw,1.9rem);letter-spacing:.06em;white-space:nowrap;transform:rotate(-28deg);}
+  .preview-close{position:absolute;top:12px;right:12px;background:var(--clay);color:#fff;border:2px solid var(--paper);width:36px;height:36px;border-radius:2px;font-size:1.3rem;line-height:1;cursor:pointer;z-index:3;}
+  .preview-close:hover{background:var(--accent-dark);}
+  .preview-caption{display:none;background:var(--paper);border-top:1px solid var(--line);padding:2px 28px 18px;width:100%;}
+  .preview-caption.show{display:block;}
+  .preview-caption-inner{max-width:60ch;margin:0 auto;text-align:center;padding-top:14px;}
+  .preview-caption .kicker{display:block;margin-bottom:.5em;}
+  .preview-caption h3{margin:0 0 .4em;font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--ink);}
+  .preview-caption p{margin:0 0 6px;color:var(--muted);font-size:.95rem;line-height:1.55;}
+  .preview-caption #previewCaptionDims{display:inline-block;margin-top:4px;color:var(--accent-dark);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;}
+  @media (max-width:600px){.preview-caption{padding:2px 20px 16px;} .preview-frame:has(.preview-caption.show) .preview-media img{max-height:38vh;}}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:980px){
+    .topbar{padding:14px 20px;}
+    .menu-toggle{display:block;}
+    .topbar nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);}
+    .topbar nav.nav-open{display:block;}
+    .topbar nav ul{flex-direction:column;gap:0;padding:12px 20px;}
+    .topbar nav li{padding:10px 0;border-bottom:1px solid var(--line);}
+    .hero-inner{padding:0 20px 40px;}
+    section{padding:52px 20px;}
+    .statement{padding:48px 24px;}
+    .arbeit-row,.contact-panel{grid-template-columns:1fr;gap:32px;}
+    .contact-panel{padding:36px 24px;}
+    .vita-flex{flex-direction:column;gap:24px;}
+    .vita-flex img{width:140px;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .exhib-columns{columns:1;}
+    footer{padding:24px 20px;flex-direction:column;text-align:center;}
+    .lightbox-inner{padding:24px 18px;}
+  }
+
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="images/logo.png" alt="Logo">
+    <span>Babette Klingenberg</span>
+  </div>
+  <button class="menu-toggle" type="button" aria-label="Menü öffnen">☰</button>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#arbeit">Arbeit</a></li>
+      <li><a href="#vita">Vita</a></li>
+      <li><a href="#malerei">Malerei</a></li>
+      <li><a href="#karten">Illustration</a></li>
+      <li><a href="#ausstellungen">Ausstellungen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============================================================ -->
+  <!-- Hero: großes Bild im Hintergrund, Text unten (Wix-Portfolio-Stil) -->
+  <!-- ============================================================ -->
+  <section id="home" class="hero" style="padding:0;border-bottom:none;">
+    <img src="images/hero_atelier.jpg" alt="Gemälde mit Zypressen und Sonnenlicht">
+    <div class="hero-inner">
+      <div class="kicker">Malerei · Illustration · Grafik</div>
+      <h1>Ein Atelier voller Farbe, Geschichten und Struktur</h1>
+      <p>Seit über 35 Jahren übersetze ich Natur, Reisen und Stimmungen in Bilder – von großformatigen Unikaten bis zu liebevollen Illustrationen für Kinder und Erwachsene.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Statement -->
+  <!-- ============================================================ -->
+  <div class="statement">
+    <blockquote>„Die Ausübung der Kunst ist ein großer Teil meines Ichs, es ist mir die Luft, mit der ich atme.“</blockquote>
+    <cite>Clara Schumann</cite>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Meine Arbeit -->
+  <!-- ============================================================ -->
+  <section id="arbeit">
+    <div class="section-head">
+      <h2>Meine Arbeit</h2>
+    </div>
+    <div class="arbeit-row">
+      <div>
+        <p>Mein Beruf ist Grafikerin, aber bereits vor und während des Studiums habe ich mich mit Illustration und Malerei beschäftigt.</p>
+        <p>Neben meiner Anstellung als Layouterin bekam ich die Möglichkeit, 20 Jahre für einen Verlag in Augsburg wöchentlich Kinderillustrationen anzufertigen.</p>
+        <p>Durch Malkurse bei der Münchner Künstlerin Eva Großhennig begann das Interesse an Acrylmalerei und Abstraktion.</p>
+        <p>Später kamen andere Themen wie menschliche Figuren, Landschaften und kubistische Formen hinzu, bis hin zu pflanzlichen und tierischen Motiven.</p>
+        <p>Ein anderer Teil meiner derzeitigen Arbeit sind Illustrationen, die ich für verschiedene Druckerzeugnisse einsetze, wie Jahreskalender, Karten, Tassen, Adventskalender.…</p>
+      </div>
+      <div>
+        <p class="highlight">Inspiriert werde ich von der Beobachtung meiner Umwelt, von Landschaften, Reisen, Stimmungen in den verschiedenen Jahreszeiten.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Vita -->
+  <!-- ============================================================ -->
+  <section id="vita">
+    <div class="section-head">
+      <h2>Vita</h2>
+    </div>
+    <div class="vita-flex">
+      <img src="images/portrait.jpg" alt="Portrait Babette Klingenberg">
+      <ul class="vita-list">
+        <li><span>Geboren in Marburg/Lahn (deutsch-französische Staatsbürgerschaft)</span></li>
+        <li><span>Abitur, Studium für Kommunikationsdesign (FH Augsburg)</span></li>
+        <li><span>Studium der Malerei an der Akademie Roederer, Paris</span></li>
+        <li><span>Diplom für Kommunikationsdesign an der FH Augsburg</span></li>
+        <li><span>Layouterin und Illustratorin einer Jugendzeitschrift, Weltbild; Signets und Logos für Geschäfte und Firmen</span></li>
+        <li><span>Regelmäßige Einzel- und Gruppenausstellungen</span></li>
+        <li><span>Kurse für Acrylmalerei an unterschiedlichen VHS Institutionen und im ASZ München Solln</span></li>
+        <li><span>Mitglied im Künstlerkreis Neuried</span></li>
+        <li><span>Mitglied der Künstlerpalette Unterschleißheim (ART, gegründet 1990)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Malerei -->
+  <!-- ============================================================ -->
+  <section id="malerei">
+    <div class="section-head">
+      <h2>Malerei</h2>
+      <span class="lede-side">Bitte klicken Sie auf eine Kategorie für weitere Werke.</span>
+    </div>
+    <div class="gallery">
+      <figure data-cat="figuerlich" data-group="malerei"><img src="images/painting/gallery/figuerlich/figuerlich-1.jpg" alt="Figürlich" style="object-position:50% 18%;"><figcaption>Figürlich</figcaption></figure>
+      <figure data-cat="abstrakt" data-group="malerei"><img src="images/painting/gallery/abstrakt/abstrakt-1.jpg" alt="Abstrakt"><figcaption>Abstrakt</figcaption></figure>
+      <figure data-cat="landschaft" data-group="malerei"><img src="images/painting/gallery/landschaft/landschaft-1.jpg" alt="Landschaft"><figcaption>Landschaft</figcaption></figure>
+      <figure data-cat="tierwelt" data-group="malerei"><img src="images/painting/gallery/tierwelt/tierwelt-1.jpg" alt="Tierwelt" style="object-position:50% 20%;"><figcaption>Tierwelt</figcaption></figure>
+      <figure data-cat="kubistisch" data-group="malerei"><img src="images/painting/gallery/kubistisch/kubistisch-1.jpg" alt="Kubistisch" style="object-position:50% 65%;"><figcaption>Kubistisch</figcaption></figure>
+      <figure data-cat="pflanzlich" data-group="malerei"><img src="images/painting/gallery/pflanzlich/pflanzlich-1.jpg" alt="Pflanzlich"><figcaption>Pflanzlich</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Illustrationen, Karten & Kalender -->
+  <!-- ============================================================ -->
+  <section id="karten">
+    <div class="section-head">
+      <h2>Illustrationen, Karten &amp; Kalender</h2>
+      <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben.</span>
+    </div>
+    <div class="gallery">
+      <figure data-cat="weihnachtskarten" data-group="illu"><img src="images/illustration/gallery/weihnachtskarten/karte-04.jpg" alt="Weihnachtskarten" style="object-position:50% 15%;"><figcaption>Weihnachtskarten</figcaption></figure>
+      <figure data-cat="tischkalender" data-group="illu"><img src="images/illustration/gallery/tischkalender/cover.jpg" alt="Tischkalender mit Sprüchen"><figcaption>Tischkalender mit Sprüchen</figcaption></figure>
+      <figure data-cat="karten" data-group="illu"><img src="images/illustration/gallery/karten/produktfoto.jpg" alt="Karten"><figcaption>Karten</figcaption></figure>
+      <figure data-cat="jahreskalender" data-group="illu"><img src="images/illustration/gallery/jahreskalender/produktfoto.jpg" alt="Jahreskalender"><figcaption>Jahreskalender</figcaption></figure>
+      <figure data-cat="geburtstagskalender" data-group="illu"><img src="images/illustration/gallery/geburtstagskalender/cover.jpg" alt="Geburtstagskalender" style="object-position:50% 40%;"><figcaption>Geburtstagskalender</figcaption></figure>
+      <figure data-cat="adventskalender" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Adventskalender</figcaption></figure>
+      <figure data-cat="franzoesische-rezepte" data-group="illu"><div class="gallery-placeholder"></div><figcaption>Französische Rezepte</figcaption></figure>
+    </div>
+    <p class="price-note" style="color:var(--muted);max-width:none;margin-top:28px;">Durch eine große Farbpalette, viele Muster und teilweise schwungvolle Bewegungen der Figuren versuche ich, Leichtigkeit auszudrücken. Mein Anliegen ist es, dem Betrachter ein kleines Lächeln zu entlocken und ihn für einen Moment in eine hoffnungsvolle Welt zu entführen.</p>
+    <p class="price-note" style="color:var(--muted);max-width:none;">Meine Illustrationen – sei es als Klappkarte, Jahreskalender, Rezeptvorschläge oder Mutmachsprüche – können Sie gerne bei mir bestellen. Da sich das Sortiment immer mehr erweitert, informiere ich Sie auf Anfrage auch gerne über die neuesten Erzeugnisse.<br>E-Mail: babetteklingenberg@web.de · Tel.: 0160 / 5602862</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Ausstellungen -->
+  <!-- ============================================================ -->
+  <section id="ausstellungen">
+    <div class="section-head">
+      <h2>Ausstellungen</h2>
+      <span class="kicker">Werkschau</span>
+    </div>
+    <div class="membership-note"><strong>Aktuell aktiv:</strong> Seit 2008 Mitglied im Künstlerkreis Neuried, seit 2017 Mitglied der Künstlerpalette Unterschleißheim (ART).</div>
+    <div class="exhib-columns">
+      <div class="item"><span class="year">2025</span><span>„Fantasie und Realität" – 35 Jahre ART Unterschleißheimer Künstlerpalette, Landratsamt München <span class="src">Quelle: Wochenanzeiger, Aug. 2025</span></span></div>
+      <div class="item"><span class="year">2017</span><span>„eigenARTig" Jahresausstellung, Kunstkreis im K&amp;K, Neuried</span></div>
+      <div class="item"><span class="year">2017</span><span>Vernissage des eigenen Acrylmalerei-Kurses, ASZ Solln-Forstenried, München <span class="src">Quelle: Wochenanzeiger München, 03/2017</span></span></div>
+      <div class="item"><span class="year">2011</span><span>Künstlerkreis Neuried</span></div>
+      <div class="item"><span class="year">2011</span><span>Stadtbibliothek Moosach</span></div>
+      <div class="item"><span class="year">2011</span><span>Radiologie München</span></div>
+      <div class="item"><span class="year">2010</span><span>Klinikum Starnberg, München</span></div>
+      <div class="item"><span class="year">2009</span><span>Tech Data, München</span></div>
+      <div class="item"><span class="year">2009</span><span>DiVoCare, München</span></div>
+      <div class="item"><span class="year">2009</span><span>Klinikum Großhadern, München</span></div>
+      <div class="item"><span class="year">2008</span><span>Kleine Galerie, Neuried</span></div>
+      <div class="item"><span class="year">2007</span><span>Café „Vor Ort", Neuried</span></div>
+      <div class="item"><span class="year">2007</span><span>Stadtbibliothek Fürstenried</span></div>
+      <div class="item"><span class="year">2005</span><span>Stadtbibliothek Fürstenried</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Kontakt -->
+  <!-- ============================================================ -->
+  <section id="kontakt">
+    <div class="contact-panel">
+      <div>
+        <span class="kicker">Anfrage</span>
+        <h2>Kontakt</h2>
+        <p>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
+        <p>Tel: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
+      </div>
+      <form>
+        <div class="field">
+          <label for="name2">Name</label>
+          <input id="name2" type="text" placeholder="Ihr Name">
+        </div>
+        <div class="field">
+          <label for="email2">E-Mail</label>
+          <input id="email2" type="email" placeholder="ihre@email.de">
+        </div>
+        <div class="field">
+          <label for="nachricht2">Nachricht</label>
+          <textarea id="nachricht2" rows="4" placeholder="Ihre Nachricht"></textarea>
+        </div>
+        <button type="button">Senden</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Impressum -->
+  <!-- ============================================================ -->
+  <section id="impressum" style="padding-top:40px;padding-bottom:40px;">
+    <div class="section-head" style="margin-bottom:20px;">
+      <h2 style="font-size:1.4rem;">Impressum</h2>
+    </div>
+    <p class="price-note" style="color:var(--muted);">Angaben gemäß § 5 TMG<br>Babette Klingenberg<br>Stadionstraße 82<br>85716 Unterschleißheim</p>
+    <p class="price-note" style="color:var(--muted);">Telefon: 0160 / 5602862<br>E-Mail: babetteklingenberg@web.de</p>
+    <p class="price-note" style="color:var(--muted);">Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV: Babette Klingenberg (Anschrift wie oben)</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Footer -->
+  <!-- ============================================================ -->
+  <footer>
+    <div>© Babette Klingenberg</div>
+    <div><a href="#impressum">Impressum &amp; Kontakt</a></div>
+  </footer>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- Lightbox -->
+<!-- ============================================================ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Schließen">×</button>
+    <h3 id="lightboxTitle"></h3>
+    <p class="lightbox-count" id="lightboxCount"></p>
+    <div class="lightbox-grid" id="lightboxGrid"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Bildvorschau mit Wasserzeichen -->
+<!-- ============================================================ -->
+<div class="preview" id="preview" aria-hidden="true">
+  <div class="preview-frame">
+    <button class="preview-close" id="previewClose" type="button" aria-label="Vorschau schließen">×</button>
+    <div class="preview-media" id="previewMedia">
+      <img id="previewImg" src="" alt="">
+      <div class="preview-watermark" id="previewWatermark" aria-hidden="true"></div>
+    </div>
+    <div class="preview-caption" id="previewCaption">
+      <div class="preview-caption-inner">
+        <span class="kicker">Illustration</span>
+        <h3 id="previewCaptionTitle"></h3>
+        <p id="previewCaptionDesc"></p>
+        <p id="previewCaptionDims"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const nav = document.querySelector('.topbar nav');
+  const toggle = document.querySelector('.menu-toggle');
+
+  toggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+
+  document.querySelectorAll('.topbar nav a').forEach(a =>
+    a.addEventListener('click', () => nav.classList.remove('nav-open'))
+  );
+})();
+</script>
+
+<script>
+(function () {
+  const GALLERY_DATA = {
+    figuerlich: { title: 'Figürlich', images: [
+      { src: 'images/painting/gallery/figuerlich/figuerlich-1.jpg', pos: '50% 18%' },
+      { src: 'images/painting/gallery/figuerlich/figuerlich-2.jpg', pos: '50% 10%' },
+      { src: 'images/painting/gallery/figuerlich/figuerlich-3.jpg', pos: '50% 8%' },
+      { src: 'images/painting/gallery/figuerlich/figuerlich-4.jpg', pos: '50% 20%' },
+      { src: 'images/painting/gallery/figuerlich/figuerlich-5.jpg', pos: '50% 15%' }
+    ]},
+    abstrakt: { title: 'Abstrakt', images: [
+      { src: 'images/painting/gallery/abstrakt/abstrakt-1.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/abstrakt/abstrakt-2.jpeg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/abstrakt/abstrakt-3.jpeg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/abstrakt/abstrakt-4.jpeg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/abstrakt/abstrakt-5.jpeg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/abstrakt/abstrakt-6.jpeg', pos: '50% 50%' }
+    ]},
+    landschaft: { title: 'Landschaft', images: [
+      { src: 'images/painting/gallery/landschaft/landschaft-1.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/landschaft/landschaft-2.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/landschaft/landschaft-3.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/landschaft/landschaft-4.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/landschaft/landschaft-5.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/landschaft/landschaft-6.jpg', pos: '50% 50%' }
+    ]},
+    tierwelt: { title: 'Tierwelt', images: [
+      { src: 'images/painting/gallery/tierwelt/tierwelt-1.jpg', pos: '50% 20%' },
+      { src: 'images/painting/gallery/tierwelt/tierwelt-2.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/tierwelt/tierwelt-3.jpg', pos: '35% 45%' },
+      { src: 'images/painting/gallery/tierwelt/tierwelt-4.jpg', pos: '50% 20%' },
+      { src: 'images/painting/gallery/tierwelt/tierwelt-5.jpg', pos: '25% 50%' },
+      { src: 'images/painting/gallery/tierwelt/tierwelt-6.jpg', pos: '50% 45%' }
+    ]},
+    kubistisch: { title: 'Kubistisch', images: [
+      { src: 'images/painting/gallery/kubistisch/kubistisch-1.jpg', pos: '50% 65%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-2.jpg', pos: '50% 70%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-3.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-4.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-5.jpg', pos: '50% 65%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-6.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/kubistisch/kubistisch-7.jpg', pos: '50% 82%' }
+    ]},
+    pflanzlich: { title: 'Pflanzlich', images: [
+      { src: 'images/painting/gallery/pflanzlich/pflanzlich-1.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/pflanzlich/pflanzlich-2.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/pflanzlich/pflanzlich-3.jpg', pos: '50% 50%' },
+      { src: 'images/painting/gallery/pflanzlich/pflanzlich-4.jpg', pos: '50% 50%' }
+    ]}
+  };
+
+  const ILLU_DATA = {
+    weihnachtskarten: { title: 'Weihnachtskarten', desc: 'Weihnachtskarten mit vielen unterschiedlichen Motiven. Um Menschen, die man gerne hat, eine kleine Freude zu bereiten.', images: [
+      { src: 'images/illustration/gallery/weihnachtskarten/karte-04.jpg', pos: '50% 15%' }
+    ]},
+    adventskalender: { title: 'Adventskalender', desc: 'Alle Jahre wieder ....... kommt die Adventszeit. Unterschiedliche Motive, Quer- oder Hochformat A3.', images: [] },
+    jahreskalender: { title: 'Jahreskalender', desc: 'Jedes Jahr nach einem neuen Motto. Monatskalender mit Illustrationen zum Schmunzeln, Nachdenken .... Mit Platz für persönliche Eintragungen.', dims: '10,5 × 29,7 cm', images: [
+      { src: 'images/illustration/gallery/jahreskalender/produktfoto.jpg', pos: '50% 50%' }
+    ]},
+    geburtstagskalender: { title: 'Geburtstagskalender', desc: 'Immerwährender Kalender mit Illustrationen zum Thema Musik. Damit die Geburtstage der Freunde und Bekannten nicht in Vergessenheit geraten.', dims: '14,5 × 21 cm', images: [
+      { src: 'images/illustration/gallery/geburtstagskalender/cover.jpg', pos: '50% 40%' }
+    ]},
+    tischkalender: { title: 'Tischkalender mit Sprüchen', desc: '„Sprücheklopfen" – kleine Lebenshilfe für den Alltag. Sprüche für jeden Tag, die ermutigen, schmunzeln und ein wenig zum Nachdenken anregen können. Mit Ringbindung, zum Aufstellen.', dims: '10,5 × 14,5 cm', images: [
+      { src: 'images/illustration/gallery/tischkalender/cover.jpg', pos: '50% 50%' }
+    ]},
+    'franzoesische-rezepte': { title: 'Französische Rezepte', desc: 'Leichte Rezepte aus Frankreich, einfach nachzukochen und zu backen, mit Ringbindung zum Aufstellen.', dims: '10,5 × 10,5 cm', images: [] },
+    karten: { title: 'Karten', desc: 'Es kann Spaß machen, mal wieder Karten zu schreiben und Anderen eine kleine Freude zu bereiten.', images: [
+      { src: 'images/illustration/gallery/karten/produktfoto.jpg', pos: '50% 50%' }
+    ]}
+  };
+
+  const WATERMARKS = { malerei: 'Malerei von Babette Klingenberg', illu: 'Illustration von Babette Klingenberg' };
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxGrid = document.getElementById('lightboxGrid');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxCount = document.getElementById('lightboxCount');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  const preview = document.getElementById('preview');
+  const previewMedia = document.getElementById('previewMedia');
+  const previewImg = document.getElementById('previewImg');
+  const previewClose = document.getElementById('previewClose');
+  const previewWatermark = document.getElementById('previewWatermark');
+  const previewCaption = document.getElementById('previewCaption');
+  const previewCaptionTitle = document.getElementById('previewCaptionTitle');
+  const previewCaptionDesc = document.getElementById('previewCaptionDesc');
+  const previewCaptionDims = document.getElementById('previewCaptionDims');
+  const WATERMARK_TILES = 12;
+
+  let currentWatermark = WATERMARKS.malerei;
+
+  function openLightbox(cat) {
+    const data = GALLERY_DATA[cat];
+    if (!data) return;
+    currentWatermark = WATERMARKS.malerei;
+    lightboxTitle.textContent = data.title;
+    const total = data.images.length;
+    lightboxCount.textContent = total + (total === 1 ? ' Werk' : ' Werke') + ' – zum Vergrößern anklicken';
+    lightboxGrid.innerHTML = data.images.map(function (img, i) {
+      return '<div class="wall-piece">'
+        + '<div class="wall-frame"><div class="wall-mat">'
+        + '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy">'
+        + '</div></div>'
+        + '<div class="wall-plaque"><span class="n">Werk ' + String(i + 1).padStart(2, '0') + ' von ' + String(total).padStart(2, '0') + '</span></div>'
+        + '</div>';
+    }).join('');
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  function openIlluPreview(cat) {
+    const data = ILLU_DATA[cat];
+    if (!data) return;
+    currentWatermark = WATERMARKS.illu;
+    const img = data.images[0];
+    openPreview(img ? img.src : null, data.title, data);
+  }
+
+  function openPreview(src, alt, caption) {
+    if (src) {
+      previewMedia.classList.remove('no-image');
+      previewImg.style.display = '';
+      previewImg.src = src;
+      previewImg.alt = alt;
+      previewWatermark.innerHTML = ('<span>' + currentWatermark + '</span>').repeat(WATERMARK_TILES);
+    } else {
+      previewMedia.classList.add('no-image');
+      previewImg.src = '';
+      previewWatermark.innerHTML = '';
+    }
+    if (caption) {
+      previewCaptionTitle.textContent = caption.title || '';
+      previewCaptionDesc.textContent = caption.desc || '';
+      previewCaptionDims.textContent = caption.dims ? 'Format: ' + caption.dims : '';
+      previewCaption.classList.add('show');
+    } else {
+      previewCaption.classList.remove('show');
+    }
+    preview.classList.add('open');
+    preview.setAttribute('aria-hidden', 'false');
+  }
+
+  function closePreview() {
+    preview.classList.remove('open');
+    preview.setAttribute('aria-hidden', 'true');
+    previewImg.src = '';
+  }
+
+  document.querySelectorAll('.gallery figure[data-cat]').forEach(fig => {
+    fig.addEventListener('click', () => {
+      if (fig.dataset.group === 'illu') openIlluPreview(fig.dataset.cat);
+      else openLightbox(fig.dataset.cat);
+    });
+  });
+
+  lightboxGrid.addEventListener('click', function (e) {
+    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt, null);
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  previewClose.addEventListener('click', closePreview);
+  preview.addEventListener('click', function (e) {
+    if (e.target === preview) closePreview();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (preview.classList.contains('open')) closePreview();
+    else if (lightbox.classList.contains('open')) closeLightbox();
+  });
+})();
+</script>
+</body>
+</html>
