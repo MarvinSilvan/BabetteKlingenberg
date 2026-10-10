@@ -1,8 +1,17 @@
 # Babette Klingenberg – Website-Relaunch
 
-Modernisierte Website für [babette-klingenberg.de](https://www.babette-klingenberg.de/) im
-"Warmes Atelier"-Design (Editorial-Stil, Terrakotta/Olive, Seitennavigation), erstellt auf Basis
-der Original-Texte und -Bilder sowie zusätzlich recherchierter, aktueller Ausstellungsinfos.
+Modernisierte Website für [babette-klingenberg.de](https://www.babette-klingenberg.de/), erstellt
+auf Basis der Original-Texte und -Bilder sowie zusätzlich recherchierter, aktueller
+Ausstellungsinfos.
+
+Aktuelles Design (`index.html`): Portfolio-Stil mit Top-Navigation, großformatigem Hero-Bild und
+dynamischen Hintergrundelementen, Farbpalette aus dem Hero-Gemälde abgeleitet (Rost-Orange als
+Leitfarbe, Lila/Grün als Akzente). Barrierefreiheit: Tastaturbedienung für Galerien/Dialoge,
+Fokus-Management, funktionierendes Kontaktformular (öffnet das E-Mail-Programm), aktive
+Nav-Markierung beim Scrollen.
+
+Die vorherige Design-Variante ("Warmes Atelier", Editorial-Stil, Terrakotta/Olive,
+Seitennavigation) liegt zur Referenz unter `archiv/index-warmes-atelier.html`.
 
 ## Ansehen
 
@@ -54,7 +63,7 @@ Ausstellungsdaten und insbesondere die neueren Werktitel/Maße mit ihr abgestimm
 ## Offene Punkte / Annahmen
 
 - **Bildauflösung**: Die übernommenen Thumbnails sind klein (Original ~134×101 px, neuere Werke ~80×80 px). Für den finalen Launch sollten hochauflösende Originalbilder von Babette Klingenberg eingebunden werden.
-- **Kontaktformular**: rein optisch, kein Versand-Backend. Für den Relaunch empfiehlt sich ein Form-Service (z. B. Formspree, Netlify Forms).
+- **Kontaktformular**: öffnet beim Absenden das E-Mail-Programm des Besuchers mit vorausgefüllter Nachricht (kein eigenes Versand-Backend). Für den Relaunch alternativ ein Form-Service möglich (z. B. Formspree, Netlify Forms).
 - **Preise** (Karten 2,50 €, Kalender 8,00 €) stammen unverändert von der Originalseite – vor Veröffentlichung auf Aktualität prüfen.
 - **Impressum**: Aus Datenschutzgründen wurde die im Original genannte Technik-Umsetzerin (Drittperson) nicht übernommen; bei Bedarf im finalen Impressum ergänzen.
 
