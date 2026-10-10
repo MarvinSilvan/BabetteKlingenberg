@@ -61,13 +61,14 @@
 
   /* ---------- Meine Arbeit ---------- */
   .arbeit-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
-  .arbeit-row .highlight{border-left:3px solid var(--terracotta);padding-left:20px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--terracotta-dark);}
+  .arbeit-row .highlight{position:relative;margin:6px 0 0;padding:6px 10px 6px 46px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.55rem;line-height:1.5;color:var(--terracotta-dark);}
+  .arbeit-row .highlight::before{content:"„";position:absolute;left:-6px;top:-30px;font-family:'Cormorant Garamond',serif;font-style:normal;font-weight:600;font-size:5rem;color:var(--terracotta);opacity:.3;line-height:1;}
 
   /* ---------- Vita ---------- */
   .vita-flex{display:flex;gap:56px;align-items:flex-start;}
   .vita-flex img{width:220px;border-radius:4px;}
   .vita-list{list-style:none;margin:0;padding:0 0 0 22px;flex:1;position:relative;}
-  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,#9e783c,#7f4e33,#642425);border-radius:2px;}
+  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,#9e783c,#7f4e33,#642425);opacity:.35;}
   .vita-list li{position:relative;padding:12px 0;border-bottom:1px dashed var(--line);}
   .vita-list li::before{content:"";position:absolute;left:-23px;top:19px;width:9px;height:9px;border-radius:50%;background:#9e783c;box-shadow:0 0 0 2px var(--paper);}
   .vita-list li:nth-child(3n+2)::before{background:#7f4e33;}
@@ -130,23 +131,22 @@
   .wall-mat{background:#efe7d8;padding:12px;}
   .lightbox-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--sand);cursor:zoom-in;}
   .wall-plaque{margin-top:14px;}
-  .wall-plaque .n{display:block;color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;}
-  .wall-plaque .t{font-family:'Cormorant Garamond',serif;font-size:.98rem;color:#f3ece1;}
+  .wall-plaque .n{display:block;color:var(--gold);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;}
 
   /* ---------- Bildvorschau (großes Bild mit Wasserzeichen) ---------- */
   .preview{display:none;position:fixed;inset:0;background:rgba(10,8,6,.92);z-index:600;align-items:center;justify-content:center;padding:40px 20px;}
   .preview.open{display:flex;}
   .preview-frame{position:relative;max-width:min(1100px,92vw);max-height:92vh;overflow-y:auto;}
-  .preview-media{position:relative;}
+  .preview-media{position:relative;display:inline-block;max-width:100%;overflow:hidden;border-radius:6px;}
   .preview-media img{display:block;max-width:100%;max-height:72vh;margin:0 auto;border-radius:6px;object-fit:contain;}
-  .preview-media.no-image{min-height:240px;border-radius:6px;background:linear-gradient(135deg,var(--terracotta),var(--olive));display:flex;align-items:center;justify-content:center;}
+  .preview-media.no-image{min-height:240px;width:100%;background:linear-gradient(135deg,var(--terracotta),var(--olive));display:flex;align-items:center;justify-content:center;}
   .preview-media.no-image::after{content:"Noch kein Beispielbild hinterlegt";color:#fff;font-size:.95rem;opacity:.9;padding:0 20px;text-align:center;}
   .preview-media.no-image img{display:none;}
-  .preview-watermark{position:absolute;inset:-15% -10%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;pointer-events:none;overflow:hidden;}
-  .preview-watermark span{color:rgba(255,255,255,.62);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.3rem,3.6vw,2.3rem);letter-spacing:.07em;white-space:nowrap;transform:rotate(-28deg);text-shadow:0 2px 10px rgba(0,0,0,.6);}
+  .preview-watermark{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;pointer-events:none;overflow:hidden;}
+  .preview-watermark span{color:rgba(255,255,255,.38);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.1rem,3vw,1.9rem);letter-spacing:.06em;white-space:nowrap;transform:rotate(-28deg);text-shadow:0 1px 6px rgba(0,0,0,.45);}
   .preview-close{position:absolute;top:-18px;right:-18px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;z-index:2;}
   .preview-close:hover{background:var(--terracotta-dark);}
-  .preview-caption{display:none;background:var(--paper);border-radius:0 0 10px 10px;padding:22px 28px;max-width:640px;margin:0 auto;}
+  .preview-caption{display:none;background:var(--paper);border-radius:0 0 10px 10px;padding:22px 28px;width:100%;}
   .preview-caption.show{display:block;}
   .preview-caption h3{margin:0 0 .3em;font-size:1.4rem;color:var(--ink);}
   .preview-caption p{margin:0 0 6px;color:var(--muted);font-size:.95rem;}
@@ -246,7 +246,6 @@
     <section id="arbeit">
       <div class="section-head">
         <h2>Meine Arbeit</h2>
-        <span class="kicker">Über mich</span>
       </div>
       <div class="arbeit-row">
         <div>
@@ -257,7 +256,7 @@
           <p>Ein anderer Teil meiner derzeitigen Arbeit sind Illustrationen, die ich für verschiedene Druckerzeugnisse einsetze, wie Jahreskalender, Karten, Tassen, Adventskalender.…</p>
         </div>
         <div>
-          <p class="highlight">„Inspiriert werde ich von der Beobachtung meiner Umwelt, von Landschaften, Reisen, Stimmungen in den verschiedenen Jahreszeiten.“</p>
+          <p class="highlight">Inspiriert werde ich von der Beobachtung meiner Umwelt, von Landschaften, Reisen, Stimmungen in den verschiedenen Jahreszeiten.</p>
         </div>
       </div>
     </section>
@@ -631,7 +630,7 @@
         + '<div class="wall-frame"><div class="wall-mat">'
         + '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy">'
         + '</div></div>'
-        + '<div class="wall-plaque"><span class="n">Werk ' + String(i + 1).padStart(2, '0') + ' von ' + String(total).padStart(2, '0') + '</span><span class="t">' + data.title + '</span></div>'
+        + '<div class="wall-plaque"><span class="n">Werk ' + String(i + 1).padStart(2, '0') + ' von ' + String(total).padStart(2, '0') + '</span></div>'
         + '</div>';
     }).join('');
     lightbox.classList.add('open');
