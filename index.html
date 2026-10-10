@@ -66,9 +66,11 @@
   .vita-flex{display:flex;gap:56px;align-items:flex-start;}
   .vita-flex img{width:220px;border-radius:4px;}
   .vita-list{list-style:none;margin:0;padding:0 0 0 22px;flex:1;position:relative;}
-  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line);}
+  .vita-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,#9e783c,#7f4e33,#642425);border-radius:2px;}
   .vita-list li{position:relative;padding:12px 0;border-bottom:1px dashed var(--line);}
-  .vita-list li::before{content:"";position:absolute;left:-22px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--terracotta);}
+  .vita-list li::before{content:"";position:absolute;left:-23px;top:19px;width:9px;height:9px;border-radius:50%;background:#9e783c;box-shadow:0 0 0 2px var(--paper);}
+  .vita-list li:nth-child(3n+2)::before{background:#7f4e33;}
+  .vita-list li:nth-child(3n)::before{background:#642425;}
   .year{color:var(--terracotta);font-weight:600;}
 
   /* ---------- Bildergalerien (Malerei / Illustration / Karten) ---------- */
@@ -82,7 +84,9 @@
 
   /* ---------- Malerei-Kategorien sind anklickbar (öffnen Lightbox) ---------- */
   #malerei .gallery figure,#karten .gallery figure{cursor:pointer;}
-  #malerei .gallery figure::after,#karten .gallery figure::after{content:"+ mehr ansehen";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(58,47,39,0);color:transparent;font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:.2s;text-align:center;padding:12px;}
+  #malerei .gallery figure::after,#karten .gallery figure::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(58,47,39,0);color:transparent;font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:.2s;text-align:center;padding:12px;}
+  #malerei .gallery figure::after{content:"+ mehr ansehen";}
+  #karten .gallery figure::after{content:"ansehen";}
   #malerei .gallery figure:hover::after,#karten .gallery figure:hover::after{background:rgba(58,47,39,.45);color:#fff;}
   .gallery-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--terracotta),var(--olive));}
 
@@ -114,8 +118,6 @@
   .lightbox-close{position:absolute;top:16px;right:16px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;}
   .lightbox-close:hover{background:var(--terracotta-dark);}
   .lightbox-inner h3{margin-top:0;font-size:1.8rem;}
-  .lightbox-desc{color:var(--ink);font-size:1rem;max-width:640px;margin:0 0 4px;white-space:pre-line;}
-  .lightbox-dims{color:var(--terracotta-dark);font-size:.85rem;font-weight:600;margin:0 0 4px;}
   .lightbox-count{color:var(--muted);font-size:.9rem;margin:0 0 0;}
   .lightbox-empty{color:var(--muted);font-style:italic;margin-top:20px;}
   .lightbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:20px;}
@@ -124,13 +126,22 @@
   /* ---------- Bildvorschau (großes Bild mit Wasserzeichen) ---------- */
   .preview{display:none;position:fixed;inset:0;background:rgba(10,8,6,.92);z-index:600;align-items:center;justify-content:center;padding:40px 20px;}
   .preview.open{display:flex;}
-  .preview-frame{position:relative;max-width:min(1100px,92vw);max-height:88vh;}
-  .preview-frame img{display:block;max-width:100%;max-height:88vh;border-radius:6px;object-fit:contain;}
-  .preview-watermark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;}
-  .preview-watermark span{color:rgba(255,255,255,.55);font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3vw,1.9rem);letter-spacing:.08em;white-space:nowrap;transform:rotate(-24deg);text-shadow:0 2px 10px rgba(0,0,0,.55);}
-  .preview-close{position:absolute;top:-18px;right:-18px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;}
+  .preview-frame{position:relative;max-width:min(1100px,92vw);max-height:92vh;overflow-y:auto;}
+  .preview-media{position:relative;}
+  .preview-media img{display:block;max-width:100%;max-height:72vh;margin:0 auto;border-radius:6px;object-fit:contain;}
+  .preview-media.no-image{min-height:240px;border-radius:6px;background:linear-gradient(135deg,var(--terracotta),var(--olive));display:flex;align-items:center;justify-content:center;}
+  .preview-media.no-image::after{content:"Noch kein Beispielbild hinterlegt";color:#fff;font-size:.95rem;opacity:.9;padding:0 20px;text-align:center;}
+  .preview-media.no-image img{display:none;}
+  .preview-watermark{position:absolute;inset:-15% -10%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;pointer-events:none;overflow:hidden;}
+  .preview-watermark span{color:rgba(255,255,255,.62);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.3rem,3.6vw,2.3rem);letter-spacing:.07em;white-space:nowrap;transform:rotate(-28deg);text-shadow:0 2px 10px rgba(0,0,0,.6);}
+  .preview-close{position:absolute;top:-18px;right:-18px;background:var(--terracotta);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;z-index:2;}
   .preview-close:hover{background:var(--terracotta-dark);}
-  @media (max-width:600px){.preview-close{top:-14px;right:0;}}
+  .preview-caption{display:none;background:var(--paper);border-radius:0 0 10px 10px;padding:22px 28px;max-width:640px;margin:0 auto;}
+  .preview-caption.show{display:block;}
+  .preview-caption h3{margin:0 0 .3em;font-size:1.4rem;color:var(--ink);}
+  .preview-caption p{margin:0 0 6px;color:var(--muted);font-size:.95rem;}
+  .preview-caption #previewCaptionDims{color:var(--terracotta-dark);font-weight:600;font-size:.85rem;}
+  @media (max-width:600px){.preview-close{top:-14px;right:0;} .preview-caption{padding:18px 20px;}}
 
   /* ---------- Mobile (≤980px) ---------- */
   @media (max-width:980px){
@@ -247,7 +258,6 @@
     <section id="vita">
       <div class="section-head">
         <h2>Vita</h2>
-        <span class="kicker">Werdegang</span>
       </div>
       <div class="vita-flex">
         <img src="images/portrait.jpg" alt="Portrait Babette Klingenberg">
@@ -289,7 +299,7 @@
     <section id="karten">
       <div class="section-head">
         <h2>Illustrationen, Karten &amp; Kalender</h2>
-        <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben. Klicken Sie auf eine Kategorie für Beispiele und Details.</span>
+        <span class="lede-side">Ich gestalte jedes Jahr einen neuen Jahreskalender, Adventskalender und andere Druckerzeugnisse. Die Themen dafür denke ich mir aus – oft sind es Betrachtungen aus dem täglichen Leben.</span>
       </div>
       <div class="gallery">
         <figure data-cat="weihnachtskarten" data-group="illu"><img src="images/illustration/gallery/weihnachtskarten/karte-04.jpg" alt="Weihnachtskarten" style="object-position:50% 15%;"><figcaption>Weihnachtskarten</figcaption></figure>
@@ -432,8 +442,6 @@
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Schließen">×</button>
     <h3 id="lightboxTitle"></h3>
-    <p class="lightbox-desc" id="lightboxDesc"></p>
-    <p class="lightbox-dims" id="lightboxDims"></p>
     <p class="lightbox-count" id="lightboxCount"></p>
     <div class="lightbox-grid" id="lightboxGrid"></div>
   </div>
@@ -445,9 +453,14 @@
 <div class="preview" id="preview" aria-hidden="true">
   <div class="preview-frame">
     <button class="preview-close" id="previewClose" type="button" aria-label="Vorschau schließen">×</button>
-    <img id="previewImg" src="" alt="">
-    <div class="preview-watermark" aria-hidden="true">
-      <span>Malerei von Babette Klingenberg</span>
+    <div class="preview-media" id="previewMedia">
+      <img id="previewImg" src="" alt="">
+      <div class="preview-watermark" id="previewWatermark" aria-hidden="true"></div>
+    </div>
+    <div class="preview-caption" id="previewCaption">
+      <h3 id="previewCaptionTitle"></h3>
+      <p id="previewCaptionDesc"></p>
+      <p id="previewCaptionDims"></p>
     </div>
   </div>
 </div>
@@ -524,22 +537,7 @@
       title: 'Weihnachtskarten',
       desc: 'Weihnachtskarten mit vielen unterschiedlichen Motiven. Um Menschen, die man gerne hat, eine kleine Freude zu bereiten.',
       images: [
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-01.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-02.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-03.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-04.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-05.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-06.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-07.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-08.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-09.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-10.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-11.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-12.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-13.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-14.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/karte-15.jpg', pos: '50% 15%' },
-        { src: 'images/illustration/gallery/weihnachtskarten/produktfoto.jpg', pos: '50% 35%' }
+        { src: 'images/illustration/gallery/weihnachtskarten/karte-04.jpg', pos: '50% 15%' }
       ]
     },
     adventskalender: {
@@ -560,12 +558,7 @@
       desc: 'Immerwährender Kalender mit Illustrationen zum Thema Musik. Damit die Geburtstage der Freunde und Bekannten nicht in Vergessenheit geraten.',
       dims: '14,5 × 21 cm',
       images: [
-        { src: 'images/illustration/gallery/geburtstagskalender/cover.jpg', pos: '50% 40%' },
-        { src: 'images/illustration/gallery/geburtstagskalender/dirigent.jpg', pos: '50% 50%' },
-        { src: 'images/illustration/gallery/geburtstagskalender/harfe.jpg', pos: '50% 50%' },
-        { src: 'images/illustration/gallery/geburtstagskalender/cello.jpg', pos: '50% 50%' },
-        { src: 'images/illustration/gallery/geburtstagskalender/floete.jpg', pos: '50% 50%' },
-        { src: 'images/illustration/gallery/geburtstagskalender/duo.jpg', pos: '50% 50%' }
+        { src: 'images/illustration/gallery/geburtstagskalender/cover.jpg', pos: '50% 40%' }
       ]
     },
     tischkalender: {
@@ -573,21 +566,7 @@
       desc: '„Sprücheklopfen" – kleine Lebenshilfe für den Alltag. Sprüche für jeden Tag, die ermutigen, schmunzeln und ein wenig zum Nachdenken anregen können. Mit Ringbindung, zum Aufstellen.',
       dims: '10,5 × 14,5 cm',
       images: [
-        { src: 'images/illustration/gallery/tischkalender/cover.jpg', pos: '50% 50%' },
-        { src: 'images/illustration/gallery/tischkalender/beispiel.jpg', pos: '50% 35%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-01.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-02.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-03.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-04.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-05.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-06.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-07.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-08.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-09.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-10.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-11.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-12.jpg', pos: '50% 12%' },
-        { src: 'images/illustration/gallery/tischkalender/spruch-13.jpg', pos: '50% 12%' }
+        { src: 'images/illustration/gallery/tischkalender/cover.jpg', pos: '50% 50%' }
       ]
     },
     'franzoesische-rezepte': {
@@ -600,13 +579,7 @@
       title: 'Karten',
       desc: 'Es kann Spaß machen, mal wieder Karten zu schreiben und Anderen eine kleine Freude zu bereiten.',
       images: [
-        { src: 'images/illustration/gallery/karten/produktfoto.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards3_glueckwunsch_thumb.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards6_weihnachten_thumb.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards4_geburtstag_thumb.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards1_ohnetext_thumb.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards5_allesliebe_thumb.jpg', pos: '50% 50%' },
-        { src: 'images/cards/cards2_anderetexte_thumb.jpg', pos: '50% 50%' }
+        { src: 'images/illustration/gallery/karten/produktfoto.jpg', pos: '50% 50%' }
       ]
     }
   };
@@ -619,35 +592,32 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxGrid = document.getElementById('lightboxGrid');
   const lightboxTitle = document.getElementById('lightboxTitle');
-  const lightboxDesc = document.getElementById('lightboxDesc');
-  const lightboxDims = document.getElementById('lightboxDims');
   const lightboxCount = document.getElementById('lightboxCount');
   const lightboxClose = document.getElementById('lightboxClose');
 
   const preview = document.getElementById('preview');
+  const previewMedia = document.getElementById('previewMedia');
   const previewImg = document.getElementById('previewImg');
   const previewClose = document.getElementById('previewClose');
-  const previewWatermark = document.querySelector('.preview-watermark span');
+  const previewWatermark = document.getElementById('previewWatermark');
+  const previewCaption = document.getElementById('previewCaption');
+  const previewCaptionTitle = document.getElementById('previewCaptionTitle');
+  const previewCaptionDesc = document.getElementById('previewCaptionDesc');
+  const previewCaptionDims = document.getElementById('previewCaptionDims');
+  const WATERMARK_TILES = 12;
 
   let currentWatermark = WATERMARKS.malerei;
 
-  function openLightbox(cat, group) {
-    const source = group === 'illu' ? ILLU_DATA : GALLERY_DATA;
-    const data = source[cat];
+  // Malerei: Kategorie-Kachel oeffnet die Lightbox mit allen Werken dieser Kategorie.
+  function openLightbox(cat) {
+    const data = GALLERY_DATA[cat];
     if (!data) return;
-    currentWatermark = WATERMARKS[group] || WATERMARKS.malerei;
+    currentWatermark = WATERMARKS.malerei;
     lightboxTitle.textContent = data.title;
-    lightboxDesc.textContent = data.desc || '';
-    lightboxDims.textContent = data.dims ? 'Format: ' + data.dims : '';
-    if (data.images.length) {
-      lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Bild' : ' Bilder') + ' – zum Vergrößern anklicken';
-      lightboxGrid.innerHTML = data.images
-        .map(img => '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy">')
-        .join('');
-    } else {
-      lightboxCount.textContent = '';
-      lightboxGrid.innerHTML = '<p class="lightbox-empty">Für diese Kategorie sind noch keine Beispielbilder hinterlegt.</p>';
-    }
+    lightboxCount.textContent = data.images.length + (data.images.length === 1 ? ' Werk' : ' Werke') + ' – zum Vergrößern anklicken';
+    lightboxGrid.innerHTML = data.images
+      .map(img => '<img src="' + img.src + '" alt="' + data.title + '" style="object-position:' + (img.pos || '50% 50%') + ';" loading="lazy">')
+      .join('');
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
   }
@@ -657,10 +627,36 @@
     lightbox.setAttribute('aria-hidden', 'true');
   }
 
-  function openPreview(src, alt) {
-    previewImg.src = src;
-    previewImg.alt = alt;
-    previewWatermark.textContent = currentWatermark;
+  // Illustrationen: Kategorie-Kachel springt direkt in die Grossansicht,
+  // der Beschreibungstext steht dort als Bildunterschrift.
+  function openIlluPreview(cat) {
+    const data = ILLU_DATA[cat];
+    if (!data) return;
+    currentWatermark = WATERMARKS.illu;
+    const img = data.images[0];
+    openPreview(img ? img.src : null, data.title, data);
+  }
+
+  function openPreview(src, alt, caption) {
+    if (src) {
+      previewMedia.classList.remove('no-image');
+      previewImg.style.display = '';
+      previewImg.src = src;
+      previewImg.alt = alt;
+      previewWatermark.innerHTML = ('<span>' + currentWatermark + '</span>').repeat(WATERMARK_TILES);
+    } else {
+      previewMedia.classList.add('no-image');
+      previewImg.src = '';
+      previewWatermark.innerHTML = '';
+    }
+    if (caption) {
+      previewCaptionTitle.textContent = caption.title || '';
+      previewCaptionDesc.textContent = caption.desc || '';
+      previewCaptionDims.textContent = caption.dims ? 'Format: ' + caption.dims : '';
+      previewCaption.classList.add('show');
+    } else {
+      previewCaption.classList.remove('show');
+    }
     preview.classList.add('open');
     preview.setAttribute('aria-hidden', 'false');
   }
@@ -672,11 +668,14 @@
   }
 
   document.querySelectorAll('.gallery figure[data-cat]').forEach(fig => {
-    fig.addEventListener('click', () => openLightbox(fig.dataset.cat, fig.dataset.group));
+    fig.addEventListener('click', () => {
+      if (fig.dataset.group === 'illu') openIlluPreview(fig.dataset.cat);
+      else openLightbox(fig.dataset.cat);
+    });
   });
 
   lightboxGrid.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt);
+    if (e.target.tagName === 'IMG') openPreview(e.target.src, e.target.alt, null);
   });
 
   lightboxClose.addEventListener('click', closeLightbox);
