@@ -64,8 +64,8 @@ Ausstellungsdaten und insbesondere die neueren Werktitel/Maße mit ihr abgestimm
 
 - **Bildauflösung**: Die übernommenen Thumbnails sind klein (Original ~134×101 px, neuere Werke ~80×80 px). Für den finalen Launch sollten hochauflösende Originalbilder von Babette Klingenberg eingebunden werden.
 - **Kontaktformular**: öffnet beim Absenden das E-Mail-Programm des Besuchers mit vorausgefüllter Nachricht (kein eigenes Versand-Backend). Für den Relaunch alternativ ein Form-Service möglich (z. B. Formspree, Netlify Forms).
-- **Preise** (Karten 2,50 €, Kalender 8,00 €) stammen unverändert von der Originalseite – vor Veröffentlichung auf Aktualität prüfen.
-- **Impressum**: Aus Datenschutzgründen wurde die im Original genannte Technik-Umsetzerin (Drittperson) nicht übernommen; bei Bedarf im finalen Impressum ergänzen.
+- **Preise**: werden auf der aktuellen Seite nicht mehr genannt (Kontakt läuft über Anfrage per E-Mail/Telefon). Falls künftig wieder Preise gezeigt werden sollen, vorher auf Aktualität prüfen.
+- **Impressum/Datenschutz**: Angaben jetzt nach § 5 DDG (nicht mehr TMG), Datenschutzerklärung ergänzt, Google Fonts selbst gehostet statt von Google geladen. Aus Datenschutzgründen wurde die im Original genannte Technik-Umsetzerin (Drittperson) nicht übernommen. Noch offen: ob eine Umsatzsteuer-ID vorliegt bzw. die Kleinunternehmerregelung (§19 UStG) gilt – braucht Rückmeldung von Babette Klingenberg, bevor das ins Impressum kann.
 
 ---
 Erstellt mit Claude Code.

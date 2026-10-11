@@ -129,6 +129,9 @@
   .gallery figure:hover img{transform:scale(1.06);}
   .gallery figcaption{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;background:linear-gradient(180deg,transparent 45%,rgba(40,26,16,.78) 100%);color:#fdfaf4;font-family:'Fraunces',serif;font-size:1.05rem;opacity:0;transition:opacity .25s;}
   .gallery figure:hover figcaption{opacity:1;}
+  /* Auf Touch-Geraeten gibt es kein Hover - Beschriftung muss sonst
+     sichtbar bleiben, sonst verschwinden die Kategorienamen komplett. */
+  @media (hover:none){.gallery figcaption{opacity:1;background:linear-gradient(180deg,transparent 55%,rgba(40,26,16,.82) 100%);}}
   .gallery-placeholder{position:relative;width:100%;height:100%;background:linear-gradient(135deg,var(--rust),var(--plum) 85%);}
   .placeholder-badge{position:absolute;top:10px;right:10px;background:rgba(40,26,16,.78);color:#fdfaf4;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
   .price-note a{color:var(--rust-dark);text-decoration:underline;}
@@ -224,20 +227,24 @@
 </head>
 <body>
 
+<!-- Ohne JavaScript bleibt .reveal sonst dauerhaft bei opacity:0 (Inhalt
+     unsichtbar) - dieser Fallback zeigt alles sofort an. -->
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+
 <div class="bg-blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
 <header class="topbar">
   <div class="brand">
     <span>Babette Klingenberg</span>
   </div>
-  <button class="menu-toggle" type="button" aria-label="Menü öffnen">☰</button>
+  <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">☰</button>
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
-      <li><a href="#arbeit">Arbeit</a></li>
+      <li><a href="#arbeit">Meine Arbeit</a></li>
       <li><a href="#vita">Vita</a></li>
       <li><a href="#malerei">Malerei</a></li>
-      <li><a href="#karten">Illustration</a></li>
+      <li><a href="#karten">Illustrationen</a></li>
       <li><a href="#ausstellungen">Ausstellungen</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -509,11 +516,17 @@
   const nav = document.querySelector('.topbar nav');
   const toggle = document.querySelector('.menu-toggle');
 
-  toggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  function setNavOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+  }
+
+  toggle.addEventListener('click', () => setNavOpen(!nav.classList.contains('nav-open')));
 
   const navLinks = Array.from(document.querySelectorAll('.topbar nav a'));
   navLinks.forEach(a =>
-    a.addEventListener('click', () => nav.classList.remove('nav-open'))
+    a.addEventListener('click', () => setNavOpen(false))
   );
 
   // Aktiver Menüpunkt: markiert den Abschnitt, der gerade im Blickfeld ist.
